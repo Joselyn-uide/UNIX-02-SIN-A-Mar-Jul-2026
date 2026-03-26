@@ -14,3 +14,4 @@ gpg --decrypt MICOMPA_doc_cifrado.txt #descifra el archivo protegido enviado por
 gpg --output doc_no_cifrado_firmado.txt --clearsign doc_no_cifrado.txt #This command generates a new file (doc_no_cifrado_firmado.txt) that contains the original text of the document in a readable format along with a digital signature (clearsign).
 cat doc_no_cifrado_firmado.txt #It displays the complete contents of the file in the terminal, allowing you to see both the original text and the digital signature block.
 gpg --verify MICOMPA_doc_no_cifrado_firmado.txt #This command validates the digital signature of the file to confirm the identity of the sender.
+gpg --edit-key pametoapanta.502@gmail.com #This command allows you to enter the key editing menu (identified by email or hash) to grant a level of trust 4 ("I fully trust"), thus integrating my partner into my Web of Trust.
