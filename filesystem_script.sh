@@ -22,4 +22,5 @@ cd gss/
 pwd
 #Lists the files and folders in the current directory by adding a symbol to the end of each name
 ls -F
-
+#It displays the inode number (internal system index) next to each file or folder to identify its physical location on the disk.
+ls -i
