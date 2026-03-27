@@ -20,5 +20,6 @@ cd /etc
 cd gss/
 #Displays the full path of the current directory where you are working in the terminal
 pwd
-
+#Lists the files and folders in the current directory by adding a symbol to the end of each name
+ls -F
 
