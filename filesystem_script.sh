@@ -24,3 +24,21 @@ pwd
 ls -F
 #It displays the inode number (internal system index) next to each file or folder to identify its physical location on the disk.
 ls -i
+
+
+#Additional notes mentioned in class:
+# - In Linux, tty files are terminal interfaces that allow communication with the system. Those that include an 'S' (like ttyS0) represent the hardware's serial ports. These act as the physical bridge for sending and receiving bit-by-bit data to and from external peripherals like the Arduino.
+
+# - In Windows, partitions are named with drive letters (like C: or D:), while in Linux they are managed as device files within /dev/ (like sda, sdb, etc.).
+
+# - In C, `#include <stdio.h>` copies a header file with input/output functions into the code before compiling (Standard Input/Output (stdio)). In Python, `import` dynamically loads a module file during execution to enable its tools.
+
+# - C is a strongly typed and statically typed language, meaning that the type of each variable must be declared in the code and cannot change during execution.
+
+# - Indentation is the whitespace at the beginning of a line of code used to hierarchically organize instructions.
+
+# - In Linux, success means that a process or command executed and finished correctly, returning an exit code of 0 to the operating system.
+
+# - A pointer is a variable that stores the memory address of another variable or file in the system.
+
+# - In Windows, the kernel is located in the file ntoskrnl.exe in C:\Windows\System32, while in Linux it is an executable file (vmlinuz) located in the /boot directory.
