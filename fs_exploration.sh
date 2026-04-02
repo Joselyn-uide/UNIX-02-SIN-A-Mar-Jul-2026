@@ -23,3 +23,10 @@ mount | grep
 -e 
 # This command checks whether the system started in UEFI or BIOS mode by means of a logical test: [ -d /sys/firmware/efi ] checks if the EFI firmware directory exists; if it exists (true), the && operator executes the first echo to print "UEFI", but if it does not exist (false), the || operator acts as an alternative and executes the second echo to print "BIOS".
 [ -d /sys/firmware/efi ] && echo "UEFI" || echo "BIOS"
+
+#Create a file named "test.txt" with the text "my file"
+echo "mi archivo" > test.txt
+#Open the file and display all its contents
+cat test.txt
+#It displays detailed and technical information about the file.
+stat test.txt
