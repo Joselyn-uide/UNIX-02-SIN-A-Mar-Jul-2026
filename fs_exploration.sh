@@ -21,3 +21,5 @@ lsbk -f
 mount | grep 
 # echo -e, the -e parameter enables the interpretation of special characters with backslashes, allowing the use of commands like \n for line breaks
 -e 
+# This command checks whether the system started in UEFI or BIOS mode by means of a logical test: [ -d /sys/firmware/efi ] checks if the EFI firmware directory exists; if it exists (true), the && operator executes the first echo to print "UEFI", but if it does not exist (false), the || operator acts as an alternative and executes the second echo to print "BIOS".
+[ -d /sys/firmware/efi ] && echo "UEFI" || echo "BIOS"
