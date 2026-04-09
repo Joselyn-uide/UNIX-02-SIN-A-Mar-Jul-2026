@@ -23,3 +23,15 @@ echo $BASH
 echo $PATH
 #The command cd /usr/local places you in a standard UNIX hierarchy directory intended for programs and data installed locally by the administrator, outside of the main operating system files.
 cd /usr/local
+
+#The ls -lai command lists all files (including hidden ones) showing their index (inode) number, detailed permissions, and size in a vertical list format. 
+ls -lai
+#The command ls -l -a -i is the extended equivalent of ls -lai, and displays all files (including hidden ones) in detailed list format, preceding each one with its inode number (unique identifier in the file system).
+ls -l -a -i
+# The man ls command opens the system's electronic manual for the ls command, providing detailed documentation on its usage, syntax, and all the options or "flags" available to modify its behavior.
+man ls
+#The command ls --all is the long version of the ls -a command, and is used to list absolutely all files and directories, including hidden ones that begin with a dot (.).
+ls --all
+#The command ls -a lists all files and folders in the current directory, including hidden files that begin with a dot (.), such as configuration files.
+ls -a
+#Results ls -a: The dot (.) represents the current directory and the colon (..) represents the parent directory (the top level).
