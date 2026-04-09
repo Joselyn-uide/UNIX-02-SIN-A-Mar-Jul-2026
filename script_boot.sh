@@ -35,3 +35,16 @@ ls --all
 #The command ls -a lists all files and folders in the current directory, including hidden files that begin with a dot (.), such as configuration files.
 ls -a
 #Results ls -a: The dot (.) represents the current directory and the colon (..) represents the parent directory (the top level).
+
+total 8
+1572971 drwxrwxrwx+ 2 codespace codespace 4096 Apr  9 12:19 .
+1572874 drwxrwxrwx+ 5 codespace root      4096 Apr  9 12:19 ..
+#total 8: total disk space (measured in file system blocks) occupied by the metadata and entries of the listed directories.
+#1572971: This is the inode number, a unique identifier assigned by the file system to that specific object.
+#drwxrwxrwx+: This indicates the file type and permissions. The 'd' means it's a directory; the following letters are read (r), write (w), and execute (x) permissions for the owner, group, and others; the '+' indicates additional Access Control Lists (ACLs).
+#2: This is the number of hard links pointing to this directory.
+#codespace (first): This is the username of the file or directory owner.
+#codespace (second): This is the name of the group the file belongs to.
+#4096: This represents the file size or directory metadata in bytes.
+#Apr 9 12:19: This is the date and time of the last modification.
+#.: The trailing dot represents the current directory.
