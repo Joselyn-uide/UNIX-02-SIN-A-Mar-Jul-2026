@@ -48,3 +48,18 @@ total 8
 #4096: This represents the file size or directory metadata in bytes.
 #Apr 9 12:19: This is the date and time of the last modification.
 #.: The trailing dot represents the current directory.
+
+
+#The stat . command shows much more detailed information than ls about the current directory (the dot).
+stat .
+#Device: 7,4 identifies the hardware or disk partition where the file resides, using two numbers represented in hexadecimal or decimal format:
+#7 (Major number): Identifies the type of device or driver that the Linux kernel uses to communicate with the hardware. In this case, 7 usually corresponds to a loop device (a virtual device that allows mounting files as if they were disks).
+#4 (Minor number): Identifies the specific instance or partition within that type of device. Here, it indicates that it is the fourth unit (or partition) managed by that driver.
+ File: .
+  Size: 4096            Blocks: 8          IO Block: 4096   directory
+Device: 7,4     Inode: 1572971     Links: 2
+Access: (0777/drwxrwxrwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2026-04-09 12:19:03.530081788 +0000
+Modify: 2026-04-09 12:19:02.215081727 +0000
+Change: 2026-04-09 12:19:02.215081727 +0000
+ Birth: 2026-04-09 12:19:02.215081727 +0000
