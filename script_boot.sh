@@ -63,3 +63,14 @@ Access: 2026-04-09 12:19:03.530081788 +0000
 Modify: 2026-04-09 12:19:02.215081727 +0000
 Change: 2026-04-09 12:19:02.215081727 +0000
  Birth: 2026-04-09 12:19:02.215081727 +0000
+
+#The `ls -lt` command sorts files by their modification date and time, displaying the most recent files first in a detailed list format. In our case, it shows 0 because we haven't created any files.
+ls -lt
+#This command lists the contents of the /etc directory and, using a pipe (|), sends that output to the head -20 command, which filters and displays only the first 20 lines of the result.
+ls /etc | head -20
+#This command lists the contents of the /dev directory (where the hardware device files reside) and displays only the first 20 results in the list.
+ls /dev | head -20
+#This command lists the contents of the /etc directory and uses a pipe to display only the last 20 lines of the output, allowing you to see the end of the file list.
+ $ ls /etc | tail -20
+ #This command lists the files in the /dev directory and displays only the last 20 entries in the list, which generally correspond to the device names that are at the end of the alphabetical order.
+ ls /dev | tail -20
