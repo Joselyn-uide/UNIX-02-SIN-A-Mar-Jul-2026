@@ -17,3 +17,14 @@ make -j 2
 sudo mkdir /boot-files
 #This command copies the newly compiled kernel file (bzImage) from its original location to the /boot-files/ folder using administrator privileges.
 sudo cp arch/x86/boot/bzImage /boot-files/
+
+
+#Download the latest version of BusyBox source code without downloading the full history to save time and space.
+git  clone --depth 1 https://git.busybox.net/busybox
+#Change the current directory to the newly created folder containing the BusyBox files.
+cd busybox
+#Open the settings menu where you enable Build static binary in Settings → Build Options so that the binary is independent and does not require external libraries.
+make menuconfig
+#BusyBox starts compiling using two processor cores in parallel to speed up the creation of the executable.
+make -j 2
+
