@@ -32,5 +32,7 @@ make -j 2
 sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config
 #Find and display on screen the specific line that contains the text CONFIG_TC= so you can verify if the change was applied correctly.
 
-test
-hjkgtjt
+#Create a specific subfolder called initramfs within the boot directory to organize the temporary file system files.
+sudo mkdir /boot-files/initramfs
+#Instala todos los binarios y herramientas de BusyBox (como ls, sh, cp) dentro de la carpeta de destino especificada, configurándola como la base de tu futuro sistema operativo.
+sudo make CONFIG_PREFIX=/boot-files/initramfs install
