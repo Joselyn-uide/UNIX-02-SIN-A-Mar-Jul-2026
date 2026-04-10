@@ -12,3 +12,8 @@ cd linux
 make menuconfig
 #This command starts compiling the source code using 2 parallel processing threads to speed up the software building process.
 make -j 2
+
+#This command creates a new folder called boot-files in the system root directory, using administrator privileges to ensure write permissions.
+sudo mkdir /boot-files
+#This command copies the newly compiled kernel file (bzImage) from its original location to the /boot-files/ folder using administrator privileges.
+sudo cp arch/x86/boot/bzImage /boot-files/
