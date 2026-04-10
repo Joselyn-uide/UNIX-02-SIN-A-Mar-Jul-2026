@@ -28,3 +28,9 @@ make menuconfig
 #BusyBox starts compiling using two processor cores in parallel to speed up the creation of the executable.
 make -j 2
 
+#Search for the string CONFIG_TC=y within the .config file and replace it with CONFIG_TC=n automatically and permanently without opening the editor.
+sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config
+#Find and display on screen the specific line that contains the text CONFIG_TC= so you can verify if the change was applied correctly.
+
+test
+hjkgtjt
