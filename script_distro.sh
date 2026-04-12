@@ -56,3 +56,28 @@ sudo find . | cpio -o -H newc > ../init.cpio
 
 #This command uses the double dot argument (..) to move back one level in the directory hierarchy, returning to the general boot files folder.
 cd ..
+
+
+#Elevates the privileges of the current session to superuser (root) to perform unrestricted low-level operations on the file system.
+sudo su
+
+#Uses the `dd` command to create a 50 MB file named `boot`, filling it with binary zeros (/dev/zero) as raw storage space.
+dd if=/dev/zero of=boot bs=1M count=50
+
+#Formats the `boot` file with the FAT file system (-t fat), a requirement for the boot loader to be readable.
+mkfs -t fat boot
+
+#Installs the Syslinux boot loader binary directly into the `boot` file, modifying its starting sector to make it bootable.
+syslinux boot
+
+#Creates a temporary directory named `m` that will serve as a mount point to access the contents of the virtual disk.
+mkdir m
+
+#Associates the boot file with the `m` folder, allowing the operating system to treat that file as if it were a connected physical disk drive.
+mount boot m
+
+#Copies the system kernel (`bzImage`) and the compressed file system (`init.cpio`) into the virtual disk mounted at `m`.
+cp bzImage init.cpio m
+
+#Disconnects the virtual disk from the mount point `m`, ensuring that all data is correctly written to the boot file before closing it.
+umount m
