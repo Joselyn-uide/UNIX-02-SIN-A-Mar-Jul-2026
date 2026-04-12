@@ -43,6 +43,7 @@ cd /boot-files/initramfs
 
 #Run the vi text editor with superuser privileges to create the init file, which acts as the process with PID 1 (the first process in the system).
 sudo vi init
+#When creating the init file with vi, the first command (#!/bin/sh) tells the kernel which interpreter to use, while /bin/sh launches the interactive terminal necessary to prevent a kernel panic and allow you to control the system. To save in vi, press i, type the commands, press Esc, and finish with :wq! followed by Enter.
 
 #Use the `remove` command with elevated privileges to delete the `linuxrc` file, avoiding conflicts with the new boot standard based on the init script.
 sudo rm linuxrc
@@ -51,7 +52,7 @@ sudo rm linuxrc
 sudo chmod +x init
 
 #This command searches for files (find .), passes them to `cpio` to create a file (-o) with SVR4 header format (-H newc), and redirects the output (>) to the top level as `init.cpio`.
-sudo find . |` `cpio -o -H newc > ../init.cpio
+sudo find . | cpio -o -H newc > ../init.cpio
 
 #This command uses the double dot argument (..) to move back one level in the directory hierarchy, returning to the general boot files folder.
 cd ..
