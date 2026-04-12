@@ -36,3 +36,22 @@ sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config
 sudo mkdir /boot-files/initramfs
 #Instala todos los binarios y herramientas de BusyBox (como ls, sh, cp) dentro de la carpeta de destino especificada, configurándola como la base de tu futuro sistema operativo.
 sudo make CONFIG_PREFIX=/boot-files/initramfs install
+
+
+#Change the current working directory to the absolute path `/boot-files/initramfs`, where the installed file structure for the root system resides.
+cd /boot-files/initramfs
+
+#Run the vi text editor with superuser privileges to create the init file, which acts as the process with PID 1 (the first process in the system).
+sudo vi init
+
+#Use the `remove` command with elevated privileges to delete the `linuxrc` file, avoiding conflicts with the new boot standard based on the init script.
+sudo rm linuxrc
+
+#Modify the file's mode (chmod) to add the execute bit (+x), allowing the kernel to treat the init file as an executable binary.
+sudo chmod +x init
+
+#This command searches for files (find .), passes them to `cpio` to create a file (-o) with SVR4 header format (-H newc), and redirects the output (>) to the top level as `init.cpio`.
+sudo find . |` `cpio -o -H newc > ../init.cpio
+
+#This command uses the double dot argument (..) to move back one level in the directory hierarchy, returning to the general boot files folder.
+cd ..
