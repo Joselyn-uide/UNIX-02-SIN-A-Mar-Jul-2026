@@ -81,3 +81,48 @@ cp bzImage init.cpio m
 
 #Disconnects the virtual disk from the mount point `m`, ensuring that all data is correctly written to the boot file before closing it.
 umount m
+
+
+qemu-system-x86_64 -nographic -append "console=ttyS0" -kernel bzImage -initrd init.cpio -drive file=boot,format=raw
+#Runs the emulator for the 64-bit architecture, simulating a complete computer within the terminal.
+qemu-system-x86_64
+
+#Disables QEMU's video output and redirects all content to the current terminal, allowing interaction without a graphical interface.
+-nographic
+
+#Sends an instruction to the Linux kernel to use the serial port (ttyS0) as the main display, allowing boot messages to be viewed.
+-append "console=ttyS0"
+
+#Tells QEMU the path to the newly compiled Linux kernel so it can be loaded directly into virtual memory.
+-kernel bzImage
+
+#Loads the initial RAM filesystem that was created, which contains BusyBox and the startup script.
+-initrd init.cpio
+
+#Connects the boot file as if it were a physical hard drive in raw format so the emulated system can recognize it.
+-drive file=boot,format=raw
+
+
+#When the command starts running, the current terminal will transform into the new Linux screen.
+#Lists the files in the root directory. The output shows folders like bin and usr, confirming that the file structure loaded correctly from init.cpio.
+ls /
+
+#Displays system information. The output confirms that the compiled Kernel 7.0.0 is running, along with the exact creation date.
+uname -a
+
+#Identifies the current user. The result unknown uid 0 indicates that I am the administrator (root).
+whoami 
+
+#Opens the terminal calculator, where the system can perform complex mathematical calculations by processing binary logic.
+bc
+
+#Print Working Directory: This command confirms that we are in the root directory (/).
+pwd
+
+#This is the text editor. By running it, we can create or modify configuration files directly in the system's RAM.
+vi
+
+#Exit Procedure
+#To safely close the emulator from -nographic mode, the following QEMU escape sequence was used:
+# - Ctrl + A: This combination puts QEMU into listening mode for special commands.
+# - X key: Sends the immediate termination signal.
