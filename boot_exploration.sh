@@ -27,3 +27,14 @@ chmod u+x script.sh
 chmod o-r secreto.txt
 #Configure the private file so that the owner has read and write access (u+rw), while the group and the rest of the world lose absolutely all access (go-rwx).
 chmod u+rw,go-rwx privado
+
+#This command fails with a "Permission denied" error. This happens because sudo only grants superuser privileges to the echo command, but the redirection symbol (>) is executed by your normal user, which does not have permission to write to the /etc directory.
+sudo echo "hola" > /etc/archivo_protegido
+#In this commando, echo runs as a normal user, but passes the text via a pipe (|) to the tee command, which does have sudo privileges. The addition of > /dev/null prevents the text from being printed to the screen, making the process silent.
+echo "hola" | sudo tee /etc/archivo_protegido > /dev/null
+#List all the files and folders within the /etc directory, which is where almost all of your Linux system's global settings are stored.
+ls /etc
+#Attempt to read and display the file contents; if the file has restricted permissions, you may need to prepend sudo to view it.
+cat /etc/archivo_protegido
+#This command performs a double data output; first, it uses sudo tee to write the text "hello" into the protected system file and, simultaneously, displays it through the terminal (standard output).
+echo "hola" | sudo tee /etc/archivo_protegido
