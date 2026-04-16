@@ -16,3 +16,14 @@ man ls
 man git
 #To navigate efficiently in the manual (man), use the / key followed by the term you wish to locate; once the search has started, press n to jump to the next match forward or N to return to the previous one in the opposite direction.
 man git-clone #We are looking for what --depth does:Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch unless --no-single-branch is given to fetch the histories near the tips of all branches. If you want to clone submodules shallowly, also pass --shallow-submodules.
+
+
+#To create a file from the terminal, use touch.
+#Grants execution permissions to all users (owner, group, and others) for the script.sh file.
+chmod +x script.sh 
+# Assign execution permission only to the user (u) who owns the file.
+chmod u+x script.sh
+# Removes (-) read permission (r) from "others" (o), that is, any user who is not the owner or group of the file.
+chmod o-r secreto.txt
+#Configure the private file so that the owner has read and write access (u+rw), while the group and the rest of the world lose absolutely all access (go-rwx).
+chmod u+rw,go-rwx privado
