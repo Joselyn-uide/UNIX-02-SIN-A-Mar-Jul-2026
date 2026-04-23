@@ -48,5 +48,5 @@ exit
 sudo su 
 #Ends the superuser session and immediately returns you to your normal user account.
 exit
-# Start a superuser (root) session by configuring the entire environment, as if you had just logged in directly with that account.
+# Start a superuser (root) session by configuring the entire environment, as if you had just logged in directly with that account
 sudo su -
