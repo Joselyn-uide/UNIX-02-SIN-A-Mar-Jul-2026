@@ -38,3 +38,5 @@ ls /etc
 cat /etc/archivo_protegido
 #This command performs a double data output; first, it uses sudo tee to write the text "hello" into the protected system file and, simultaneously, displays it through the terminal (standard output).
 echo "hola" | sudo tee /etc/archivo_protegido
+#Run a command interpreter (sh) with administrator privileges (sudo) to write the text "chao" to the end of a protected file, without overwriting it.
+sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
