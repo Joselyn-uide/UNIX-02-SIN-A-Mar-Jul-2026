@@ -54,3 +54,20 @@ sudo su -
 echo "$HOME"
 #(Single quotes): The system treats it literally. It ignores the dollar sign ($) and simply prints the text exactly as you typed it: $HOME.
 echo '$HOME'
+
+#Create the file hola.sh and insert the header (Shebang) that tells the system to use the sh command interpreter to run it.
+echo '#!/bin/sh'>hola.sh
+#Add (without deleting the previous one) the instruction for the script to print the greeting on the screen.
+echo 'echo "Hola desde mi primer script"'>>hola.sh
+#Display the full contents of the file to verify that the previous two lines were saved correctly.
+cat hola.sh
+#The script is executed, but it fails ("permission denied") because the file does not yet have execution permission.
+./hola.sh
+#It shows the file details; you can see that the letter x is missing from the permissions.
+ls -l hola.sh
+#Modify the file permissions to give it execution permission.
+chmod +x hola.sh
+#Show the details again; and now you can see the x in the permissions.
+ls -l hola.sh
+#Run the script successfully and you will see the message: "Hello from my first script."
+./hola.sh
