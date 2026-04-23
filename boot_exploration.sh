@@ -80,3 +80,14 @@ sudo touch /etc/prueba.txt
 mkdir ~/mi_carpeta
 #Use the apt package manager to download and install the cowsay program (a little cow that says whatever you want in the terminal).
  sudo apt install cowsay
+
+ #Create an empty file called test.txt with your user's default permissions.
+ touch prueba.txt
+ #Change the permissions to "private" mode. The 6 gives read/write access to the owner, and the 00 removes all permissions for the group and everyone else.
+ chmod 600 prueba.txt
+ #Show how the permissions were set ( -rw-------).
+ ls -l prueba.txt
+ #Change the permissions to "public/executable". Setting 7 gives the owner full control, and setting 55 allows others to read and execute the file, but not modify it.
+ chmod 755 prueba.txt
+ #Shows the change in permissions (-rwxr-xr-x).
+ ls -l prueba.txt
