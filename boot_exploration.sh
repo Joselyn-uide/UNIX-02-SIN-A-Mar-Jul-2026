@@ -71,3 +71,12 @@ chmod +x hola.sh
 ls -l hola.sh
 #Run the script successfully and you will see the message: "Hello from my first script."
 ./hola.sh
+
+#List all files and folders within the /etc directory, which is where almost all system settings are stored.
+ls /etc
+#Create an empty file named test.txt inside the system folder /etc. sudo is required because a normal user does not have permission to write there.
+sudo touch /etc/prueba.txt
+#Create a new folder called my_folder inside the home directory (represented by the symbol ~).
+mkdir ~/mi_carpeta
+#Use the apt package manager to download and install the cowsay program (a little cow that says whatever you want in the terminal).
+ sudo apt install cowsay
