@@ -50,3 +50,7 @@ sudo su
 exit
 # Start a superuser (root) session by configuring the entire environment, as if you had just logged in directly with that account
 sudo su -
+#(Double quotes): The system interprets the variable. You can see the path to your home directory. This is called "variable expansion".
+echo "$HOME"
+#(Single quotes): The system treats it literally. It ignores the dollar sign ($) and simply prints the text exactly as you typed it: $HOME.
+echo '$HOME'
