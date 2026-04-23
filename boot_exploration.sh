@@ -40,3 +40,11 @@ cat /etc/archivo_protegido
 echo "hola" | sudo tee /etc/archivo_protegido
 #Run a command interpreter (sh) with administrator privileges (sudo) to write the text "chao" to the end of a protected file, without overwriting it.
 sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
+#Starts an interactive session as the superuser (root), loading its environment and configuration variables.
+sudo -i
+# Closes the current session or terminal, returning to the previous user.
+exit
+#Switches the current user to root (superuser) while retaining some of your normal user's privileges, allowing you to execute commands with full system control.
+sudo su 
+#Ends the superuser session and immediately returns you to your normal user account.
+exit
