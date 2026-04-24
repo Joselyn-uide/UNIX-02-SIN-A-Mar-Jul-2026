@@ -29,3 +29,13 @@
    28  git commit -m "Fix problema 3: permisos numericos 600 en sensores.log"
    29  ls -l registros/sensores.log
    30  history
+
+
+#Fix issue 5: SUID enabled in runner.sh
+
+    37  ls -l runner.sh
+   38  chmod u+s runner.sh
+   39  ls -l runner.sh
+   40  git add .
+   41  git commit -m "Fix issue 5: SUID enabled in runner.sh"
+   42  history
