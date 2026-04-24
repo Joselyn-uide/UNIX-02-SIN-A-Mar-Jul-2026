@@ -39,3 +39,14 @@
    40  git add .
    41  git commit -m "Fix issue 5: SUID enabled in runner.sh"
    42  history
+
+   #Fix problema 6: sticky bit en /tmp/kepler_zone
+    50  ls -ld /tmp/kepler_zone
+   51  sudo mkdir /tmp/kepler_zone
+   52  sudo chmod 777 /tmp/kepler_zone
+   53  ls -ld /tmp/kepler_zone
+   54  sudo chmod +t /tmp/kepler_zone
+   55  ls -ld /tmp/kepler_zone
+   56  git add .
+   57  git commit -m "Fix problema 6: sticky bit en /tmp/kepler_zone"
+   58  history
