@@ -54,3 +54,25 @@ cd ..
 cd ~
 #Represents the current directory (useful for running location-specific scripts or commands).
 cd .
+
+
+#FILE LISTING AND DETAILS
+#File listings (ls): When applied to system paths like /var/log (where system logs are stored), we can observe a wide variety of file types and permissions.
+#Anatomy of a Long Listing (ls -l)
+ls -l
+#Using the -l option, each line represents a file divided into specific fields:
+# - File type: The first character indicates what it is: d (directory), - (ordinary file such as text or images), l (symbolic link), s/p (inter-process communication via socket or pipe), and b/c (block or character hardware files).
+# - Permissions: The next nine characters define who can read, write, or execute (user, group, others).
+# - Links: Number of direct links to the file.
+# - Owner and Group: Indicates which user and group own the file.
+# - Size: File size in bytes (or blocks in directories).
+# - Timestamp: Date and time of the last modification.
+# - Name: The final name of the file or directory. If it's a symbolic link, an arrow -> appears indicating where it points.
+
+#Sorting and Display Options
+#(-t for time) Sorts files by date and time (newest first).
+ls -lt
+#(-S for size) Sorts files by size (largest first).
+ls -lS
+#Reverses any sort order (alphabetical, by time, or by size). For example, ls -lSr will display files from smallest to largest.
+ls -r
