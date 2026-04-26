@@ -36,3 +36,21 @@ aptitude -vv moo
 #This command, whose acronym stands for "print working directory," displays the absolute path of your current directory. It's an essential tool for navigating folders from the terminal.
 pwd
 #The Home Directory and the tilde (~) Symbol: On many Linux systems, the prompt displays the location in blue. The special character ~ (tilde) is a shortcut for the home directory. When you run `pwd`, you'll see the full path instead of the abbreviated symbol.
+
+#FILE SYSTEM NAVIGATION AND HIERARCHY
+#Linux organizes information in a hierarchical, tree-like structure, where directories (folders) contain files or other subdirectories. The base of everything is the root directory, represented by /. 
+#Navigation is done using paths: absolute paths start from the root (/), defining an exact location, while relative paths start from the directory you are currently in.
+#Navigating to a deeper location can be done in two ways:
+# - Combined Path: Using a single command to jump several levels, separating directories with a slash.
+# - Step-by-Step: Executing individual commands to advance one level at a time.
+
+#Change the current directory to the specified location.
+cd [path]
+#Move you directly to the top level of the system (root directory).
+cd /
+#Move you back one level in the hierarchy, to the "parent directory".
+cd ..
+#This is a quick way to return to your home directory from anywhere.
+cd ~
+#Represents the current directory (useful for running location-specific scripts or commands).
+cd .
