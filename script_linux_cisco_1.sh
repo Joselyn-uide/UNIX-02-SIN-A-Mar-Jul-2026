@@ -30,3 +30,9 @@ aptitude -v moo
 #Using multiple `-v` options increases the level of detail and sarcasm in the program's responses. By insisting with more `v`s, the command "loses patience" and responds more humorously until, finally, it gives up and displays ASCII art of a cow as a reward for the user's curiosity.
 aptitude -v -v moo
 aptitude -vv moo
+
+
+#PRINT THE WORKING DIRECTORY
+#This command, whose acronym stands for "print working directory," displays the absolute path of your current directory. It's an essential tool for navigating folders from the terminal.
+pwd
+#The Home Directory and the tilde (~) Symbol: On many Linux systems, the prompt displays the location in blue. The special character ~ (tilde) is a shortcut for the home directory. When you run `pwd`, you'll see the full path instead of the abbreviated symbol.
