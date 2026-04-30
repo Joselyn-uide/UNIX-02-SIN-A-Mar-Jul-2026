@@ -98,3 +98,24 @@ ls -r
         sudo [command]
 #       Option to execute the command as a specific user other than root.
         sudo -u [user] [command]
+
+
+#SYSTEM SECURITY: PERMISSIONS AND ACCESS CONTROL
+# Permissions
+# Permissions in Linux define how users interact with files. Running `ls -l` displays them in a nine-character block divided into three groups: owner, group, and others.
+
+# Modifying Permissions with `chmod`
+# The `chmod` (change mode) command is used to change the permissions of files and directories. Only the file owner or the root user can make these changes.
+#   Symbolic Method: The syntax is: chmod [PERMISSION_SET][ACTION][PERMISSIONS] FILE
+#       - Permission set: u (user/owner), g (group), o (others), and a (everyone/all).
+#       - Action: + (add permission), - (remove permission), and = (assign exact permission).
+#       - Permissions: r (read), w (write), and x (execute).
+
+#Before running the commands in Codespaces, we created a directory called Documents and, within it, created a file called hello.sh. Then, we set the script's permissions to 644 (-rw-r--r--) using the chmod command. The commands used were: mkdir Documents, touch Documents/hello.sh, and chmod 644 Documents/hello.sh.
+
+# The `ls` command is used to list the file and examine its current permissions. Initially, the file has `-rw-r--r--`, indicating that it has no execute permissions.
+ls -l hello.sh
+# This command adds (+) execute permission (x) only to the owner (u) of the file named hello.sh.
+chmod u+x hello.sh
+# This command is used to run the script from the current directory. The `./` prefix is ​​necessary to indicate that the system should look for the command in the current location. If you do not have the `x` permission, this command returns the error "Permission denied".
+./hello.sh
