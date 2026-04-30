@@ -119,3 +119,21 @@ ls -l hello.sh
 chmod u+x hello.sh
 # This command is used to run the script from the current directory. The `./` prefix is ​​necessary to indicate that the system should look for the command in the current location. If you do not have the `x` permission, this command returns the error "Permission denied".
 ./hello.sh
+
+
+# CHANGING THE OWNER OF A FILE
+# The `chown` (change owner) command is used to change the user who owns files and directories.
+# Usage Restriction: Requires administrative access.
+# Basic Syntax: chown [OPTIONS] [OWNER] FILE
+
+# This allows you to verify who the current owner is; the third column indicates the owning user.
+ls -l
+
+# sudo is used to obtain the necessary administrative privileges. The first argument (root) is the new owner. hello.sh is the affected file.
+sudo chown root hello.sh
+
+# When you run it after the previous command, you will see that root now appears in the third column.
+ls -l hello.sh
+
+# To run the script now that it belongs to a different user, you must precede it with `sudo` to run it with superuser privileges.
+sudo ./hello.sh
