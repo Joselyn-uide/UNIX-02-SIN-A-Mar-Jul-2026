@@ -126,3 +126,16 @@ vi
 #To safely close the emulator from -nographic mode, the following QEMU escape sequence was used:
 # - Ctrl + A: This combination puts QEMU into listening mode for special commands.
 # - X key: Sends the immediate termination signal.
+
+
+# Additional flags
+
+# 1. A minimal Linux distribution can function with just the essentials: a kernel, a basic utility system (BusyBox), and a boot method. This demonstrates that Linux doesn't need many programs to boot, only the fundamental components.
+
+# 2. BusyBox is key because it consolidates many commands (like ls, pwd, and vi) into a single file. This saves space and makes the system lighter, which is very useful in small or embedded systems.
+
+# 3. The initramfs is a temporary filesystem that is loaded into memory at startup. In this case, it's not just an intermediate step; it becomes the entire operating system, since there isn't a more complete system afterward.
+
+# 4. The boot process follows a clear sequence: first the bootloader, then the kernel, and finally the user environment. Understanding this flow helps in understanding how a Linux system actually boots up from scratch.
+
+# 5. If the init process (the first process executed by the kernel) terminates, the system crashes with a kernel panic. This shows how important this process is, as it keeps the whole system alive from the beginning.
