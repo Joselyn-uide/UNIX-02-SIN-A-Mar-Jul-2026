@@ -1,3 +1,4 @@
+# --- SECTION 2 ---
 #BASIC COMMAND SYNTAX
 #Lists the files and directories within the current location to view the folder's contents.
 ls
@@ -5,6 +6,8 @@ ls
 #This command doesn't exist (the system doesn't recognize it), since Linux commands are case-sensitive.
 LS
 
+
+# --- SECTION 2.1 AND 2.2 ---
 #COMMAND STRUCTURE IN LINUX
 #The syntax of a command consists of the command (the action to be executed), followed by options (usually prefixed with a hyphen - to modify its behavior) and arguments (the element or value on which the command acts).
 command [options…] [arguments…]
@@ -32,11 +35,13 @@ aptitude -v -v moo
 aptitude -vv moo
 
 
+# --- SECTION 3 ---
 #PRINT THE WORKING DIRECTORY
 #This command, whose acronym stands for "print working directory," displays the absolute path of your current directory. It's an essential tool for navigating folders from the terminal.
 pwd
 #The Home Directory and the tilde (~) Symbol: On many Linux systems, the prompt displays the location in blue. The special character ~ (tilde) is a shortcut for the home directory. When you run `pwd`, you'll see the full path instead of the abbreviated symbol.
 
+# --- SECTION 4 --- 
 #FILE SYSTEM NAVIGATION AND HIERARCHY
 #Linux organizes information in a hierarchical, tree-like structure, where directories (folders) contain files or other subdirectories. The base of everything is the root directory, represented by /. 
 #Navigation is done using paths: absolute paths start from the root (/), defining an exact location, while relative paths start from the directory you are currently in.
@@ -55,7 +60,7 @@ cd ~
 #Represents the current directory (useful for running location-specific scripts or commands).
 cd .
 
-
+# --- SECTION 5 ---
 #FILE LISTING AND DETAILS
 #File listings (ls): When applied to system paths like /var/log (where system logs are stored), we can observe a wide variety of file types and permissions.
 #Anatomy of a Long Listing (ls -l)
@@ -77,6 +82,7 @@ ls -lS
 #Reverses any sort order (alphabetical, by time, or by size). For example, ls -lSr will display files from smallest to largest.
 ls -r
 
+# --- SECTION 6 ---
 # Administrative Access: Privilege Management with `su` and `sudo`
 # The root user is the account with superpowers (full administrative access) that allows you to perform any action. To operate with these privileges from a normal account, two main tools are used.
 #   - The `su` Command (Switch User)
@@ -100,6 +106,7 @@ ls -r
         sudo -u [user] [command]
 
 
+# --- SECTION 7 AND 8 --- 
 #SYSTEM SECURITY: PERMISSIONS AND ACCESS CONTROL
 # Permissions
 # Permissions in Linux define how users interact with files. Running `ls -l` displays them in a nine-character block divided into three groups: owner, group, and others.
@@ -121,6 +128,7 @@ chmod u+x hello.sh
 ./hello.sh
 
 
+# --- SECTION 9 ---
 # CHANGING THE OWNER OF A FILE
 # The `chown` (change owner) command is used to change the user who owns files and directories.
 # Usage Restriction: Requires administrative access.
@@ -139,6 +147,7 @@ ls -l hello.sh
 sudo ./hello.sh
 
 
+# --- SECTION 10 ---
 # VIEWING CONTENT IN LINUX
 # File viewing depends primarily on the document size and which part you need to review.
 #   - cat (Concatenate): This tool is for viewing small files. It displays all the text at once in the terminal. It is not recommended for large files because it does not allow scrolling or pausing.
@@ -160,6 +169,7 @@ head -n 5 alpha.txt
 tail -n 5 alpha.txt
 
 
+# --- SECTION 11 ---
 # COPYING FILES IN LINUX
 # Copying files is a fundamental task for creating backups, transferring documents, or using existing files as templates.
 # The `cp` (copy) command is used to duplicate files. It requires at least two arguments: a source (the file you want to copy) and a destination (where you want to save the copy).
@@ -175,6 +185,7 @@ tail -n 5 alpha.txt
 cp /etc/passwd .
 
 
+# --- SECTION 11.1 ---
 # BIT-LEVEL FILE COPYING (dd)
 # The `dd` (data duplicator) command is used to copy files or entire partitions bit by bit.
 # Main functions:
