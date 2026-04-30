@@ -173,3 +173,32 @@ tail -n 5 alpha.txt
 #Destination: The current directory (indicated by `.`).
 #Result: A copy of the system's user configuration file is created in the Documents folder.
 cp /etc/passwd .
+
+
+# BIT-LEVEL FILE COPYING (dd)
+# The `dd` (data duplicator) command is used to copy files or entire partitions bit by bit.
+# Main functions:
+# - Clone or wipe entire disks and partitions.
+# - Copy raw data to removable devices (USB, CD-ROM).
+# - Back up the Master Boot Record (MBR).
+# - Create files of a specific size filled with zeros (useful as swap files).
+
+#Key arguments:
+# - if (Input File): The input file or device (where to read from).
+# - of (Output File): The output file or device (where to write).
+# - bs (Block Size): The size of the data blocks to use (e.g., 1MB for one megabyte).
+# - count (Count): The number of blocks to read.
+
+# Returns to the user's home directory from any previous location.
+cd ~
+
+# Creates a file called swapex in the /tmp directory.
+# Uses /dev/zero as the source (a special file that generates infinite zeros).
+# Defines 1-megabyte blocks and copies exactly 50 blocks.
+# Result: A 50 MB file full of binary zeros.
+dd if=/dev/zero of=/tmp/swapex bs=1M count=50
+
+# Note:
+# Clones an entire hard drive (sda) to another (sdb).
+# In this case, it is not necessary to specify bs or count if you want to copy the entire device.
+dd if=/dev/sda of=/dev/sdb
