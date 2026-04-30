@@ -91,3 +91,22 @@ mkdir ~/mi_carpeta
  chmod 755 prueba.txt
  #Shows the change in permissions (-rwxr-xr-x).
  ls -l prueba.txt
+
+
+# Additional flags
+# 1. STRUCTURE AND ANATOMY OF A UNIX COMMAND
+#   command [options] [arguments]
+#       • Command: This is the program we invoke (e.g., apt, which is the package manager for Debian/Ubuntu).
+#       • Subcommand: Many modern programs group functions under a helper "verb" (e.g., apt install, git clone, git push).
+#       • Options (flags): These modify the command's behavior.
+#           - Short flags: A single letter with a hyphen (e.g., -y, -a). The -y option in apt assumes "yes" to all confirmation prompts.
+#           - Long flags: A complete word with two hyphens (e.g., --yes, --all). These are clearer when reading scripts.
+#       • Arguments: These indicate what the command acts upon (e.g., in apt install git vim, the git and vim packages are the arguments).
+
+# 2. The use of `--`: Tells the command that everything that follows are arguments, not options, preventing the system from trying to interpret a filename (like `-rf`) as a recursive or forced deletion instruction.
+
+# 3. A shell is a program that acts as a command interpreter; that is, it allows the user to communicate with the operating system by typing commands that the system then executes. It's like an intermediary between the user and the kernel. Bash, on the other hand, is a specific type of shell, one of the most widely used in Linux, which, in addition to interpreting commands, includes more advanced features such as scripting, variables, and automation.
+
+# 4. Cowsay is a fun Linux program that displays an ASCII cow saying a message that you specify. It's not an essential system component, but rather a tool for testing commands or simply for entertainment.
+
+# 5. The octal system for permissions in Linux uses the numbers 4, 2, and 1 because they represent powers of 2 (2², 2¹, 2⁰). Each value corresponds to a permission: 4 = read (r), 2 = write (w), 1 = execute (x). These values ​​are used because adding them together creates all possible combinations without repeating results.
