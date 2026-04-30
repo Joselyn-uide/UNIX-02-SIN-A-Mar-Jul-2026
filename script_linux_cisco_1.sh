@@ -76,3 +76,25 @@ ls -lt
 ls -lS
 #Reverses any sort order (alphabetical, by time, or by size). For example, ls -lSr will display files from smallest to largest.
 ls -r
+
+# Administrative Access: Privilege Management with `su` and `sudo`
+# The root user is the account with superpowers (full administrative access) that allows you to perform any action. To operate with these privileges from a normal account, two main tools are used.
+#   - The `su` Command (Switch User)
+#       This command allows you to temporarily act as a different user by creating a new "shell" or login console.
+#       It switches the session to that of the specified user.
+#       su [options] [username]
+
+#       Starts a full administrative session, configuring the new user's environment (recommended for accessing as root).
+        su -
+        su -l
+        su --login
+#       Password: After execution, you will be prompted for the password, which will not be visible while you type it for security reasons.
+#       This command is used to log out of the current root user session and return to the previous account.
+        exit
+#       Note: You will know you are root because the command prompt usually changes from $ to #.
+
+#   - The `sudo` command (Substitute User Do) allows you to execute commands with the privileges of another user (root by default) without needing to create a new permanent shell.
+#       Preceding any command with `sudo` will execute it with administrative privileges.
+        sudo [command]
+#       Option to execute the command as a specific user other than root.
+        sudo -u [user] [command]
