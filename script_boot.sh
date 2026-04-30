@@ -74,3 +74,21 @@ ls /dev | head -20
  $ ls /etc | tail -20
  #This command lists the files in the /dev directory and displays only the last 20 entries in the list, which generally correspond to the device names that are at the end of the alphabetical order.
  ls /dev | tail -20
+
+
+# Additional flags
+# ABSOLUTE AND RELATIVE PATHS
+#   - An absolute path is the complete address from the system root (/) to a file or folder. It doesn't depend on your current location.
+#   Example: /workspaces/project/file.txt
+
+#   - A relative path is the address based on the directory you are currently in. It depends on your current location.
+#   Example: ./file.txt or ../file.txt
+
+# ENVIRONMENT VARIABLES
+#   Environment variables are values ​​that the system stores with a name and that programs can use to determine how to function. They are used to define configurations without having to change the code. For example, they can indicate paths, users, or system settings.
+#   Examples:
+#     • PATH: tells the system where to look for programs.
+#     • HOME: indicates the user's home directory.
+
+# RESULT of ls -lai (links)
+# When we run ls -lai, we see inode information and links for each directory. This represents the current directory and has two links because it always points to itself and is also referenced from its parent directory. Normally, the number of links in a directory reflects how many times that inode is referenced (including subdirectories). However, when using an overlay file system (like Docker or Codespaces), which combines several layers, this type of system doesn't maintain the actual hard link count as a traditional system would. Therefore, even though there should be more links, the system displays a simplified or different value, which explains the discrepancy between the expected and actual results.
