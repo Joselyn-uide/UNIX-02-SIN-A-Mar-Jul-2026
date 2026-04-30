@@ -158,3 +158,18 @@ tail alpha.txt
 head -n 5 alpha.txt
 # Displays only the last 5 lines (letters V-Z).
 tail -n 5 alpha.txt
+
+
+# COPYING FILES IN LINUX
+# Copying files is a fundamental task for creating backups, transferring documents, or using existing files as templates.
+# The `cp` (copy) command is used to duplicate files. It requires at least two arguments: a source (the file you want to copy) and a destination (where you want to save the copy).
+# Influence of Permissions: The `cp` command is affected by security settings:
+#   - You need execute permission (`x`) to access both the source and destination directories.
+#   - You need read permission (`r`) on the file you are copying.
+#   - You need write permission (`w`) and execute permission on the directory where you will create the copy.
+# Common Locations: You typically have full permissions on your home directory (represented by `~`) and the temporary directory `/tmp`.
+
+#Source: The `/etc/passwd` file.
+#Destination: The current directory (indicated by `.`).
+#Result: A copy of the system's user configuration file is created in the Documents folder.
+cp /etc/passwd .
