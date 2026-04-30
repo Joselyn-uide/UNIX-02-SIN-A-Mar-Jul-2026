@@ -137,3 +137,24 @@ ls -l hello.sh
 
 # To run the script now that it belongs to a different user, you must precede it with `sudo` to run it with superuser privileges.
 sudo ./hello.sh
+
+
+# VIEWING CONTENT IN LINUX
+# File viewing depends primarily on the document size and which part you need to review.
+#   - cat (Concatenate): This tool is for viewing small files. It displays all the text at once in the terminal. It is not recommended for large files because it does not allow scrolling or pausing.
+#   - more and less (Pagination): These commands are ideal for long files. They allow you to read the content by sections or pages, offering more controlled navigation.
+#   - head: This is used to quickly view the beginning of a file. By default, it displays the first 10 lines.
+#   - tail: This is used to view the end of a file. It is especially useful for monitoring log files that constantly add new information to the end. By default, it displays the last 10 lines.
+#   - The `-n` option is a modifier for `head` and `tail` that allows you to specify the exact number of lines you want to display, overriding the default value of 10.
+
+# Before running the commands in Codespaces, create the files `animals.txt` and `alpha.txt` in the `Documents` directory using the command `touch animals.txt alpha.txt`. Then, use the nano editor to structure the content of each file: `animals.txt` contains a numbered list of animals, and `alpha.txt` contains a complete descriptive alphabet.
+# Displays the complete list of animals contained in the file.
+cat animals.txt
+# Displays the first 10 lines of the alphabet (A to J).
+head alpha.txt
+# Displays the last 10 lines of the alphabet (Q to Y).
+tail alpha.txt
+# Displays only the first 5 lines (A to E).
+head -n 5 alpha.txt
+# Displays only the last 5 lines (letters V-Z).
+tail -n 5 alpha.txt
