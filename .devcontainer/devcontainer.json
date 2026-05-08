@@ -1,0 +1,145 @@
+// ============================================================================
+//  devcontainer.json — configuración del entorno de desarrollo
+// ============================================================================
+//  Este archivo le dice a GitHub Codespaces (y a VS Code con la
+//  extensión "Dev Containers") CÓMO preparar el contenedor: qué imagen
+//  usar, qué extensiones instalar en el editor, qué permisos darle al
+//  contenedor, cuánta RAM necesita, etc.
+//
+//  Mientras que el Dockerfile describe "cómo es la máquina por dentro",
+//  este archivo describe "cómo la conecto con el editor y con
+//  Codespaces".
+//
+//  IMPORTANTE: aunque la extensión es .json, en realidad se acepta el
+//  formato "JSONC" (JSON con comentarios). Por eso funcionan las //.
+//  Un parser de JSON estricto fallaría, pero las herramientas de
+//  devcontainer lo procesan sin problema.
+// ============================================================================
+{
+    // Nombre amigable que aparecerá en la interfaz de Codespaces/VS Code.
+    "name": "Shell and Script Program with UNIX (Kali)",
+
+    // ------------------------------------------------------------------------
+    // build: cómo construir la imagen
+    // ------------------------------------------------------------------------
+    // En vez de usar una imagen ya hecha con "image", le decimos que
+    // CONSTRUYA una nueva a partir del Dockerfile hermano (el que está
+    // en la misma carpeta .devcontainer/).
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    // ------------------------------------------------------------------------
+    // remoteUser: con qué usuario iniciamos sesión dentro del contenedor
+    // ------------------------------------------------------------------------
+    // "root" = superusuario, tiene permisos para todo.
+    //
+    // En un servidor de producción real esto NO se recomienda (si un
+    // atacante entra, tiene control total). Pero en un entorno
+    // académico donde se van a instalar paquetes, capturar paquetes de red y
+    // trastear con Tor, es lo más práctico. Y como el contenedor es
+    // efímero y aislado, el riesgo es mínimo.
+    "remoteUser": "root",
+
+    // ------------------------------------------------------------------------
+    // runArgs: argumentos extra que se pasan a "docker run"
+    // ------------------------------------------------------------------------
+    // Las "capabilities" (capacidades) son permisos muy finos del kernel
+    // Linux. Por defecto, un contenedor tiene MUY POCAS capacidades por
+    // seguridad. Aquí añadimos dos que necesitan las herramientas de red
+    // del curso:
+    //
+    //   NET_ADMIN -> permite configurar interfaces de red, rutas,
+    //                iptables, etc. Lo necesitan tor, proxychains y
+    //                algunas configuraciones de nmap.
+    //   NET_RAW   -> permite crear "sockets raw", es decir, fabricar
+    //                paquetes de red byte a byte. Lo usan tcpdump,
+    //                `nmap -sS` (SYN scan) y el comando `ping`.
+    //
+    // AVISO: Codespaces corre sobre Azure en un entorno multi-inquilino
+    // y puede IGNORAR silenciosamente algunas capacidades por seguridad.
+    // Si algo funciona en Docker local pero no en Codespaces, suele ser
+    // por esto (y no por un error nuestro).
+    "runArgs": [
+        "--cap-add=NET_ADMIN",
+        "--cap-add=NET_RAW"
+    ],
+
+    // ------------------------------------------------------------------------
+    // customizations.vscode: ajustes específicos del editor VS Code
+    // ------------------------------------------------------------------------
+    "customizations": {
+        "vscode": {
+            // Extensiones que se instalarán AUTOMÁTICAMENTE en el VS
+            // Code del Codespace. Cada string es el identificador único
+            // (formato "publisher.nombre") que aparece en el Marketplace
+            // de VS Code.
+            "extensions": [
+                // Integra NeoVim dentro de VS Code (Unidad 1, Tema 1).
+                "asvetliakov.vscode-neovim",
+
+                // Subraya errores y malas prácticas en scripts Bash en
+                // tiempo real. Muy recomendable para la Unidad 2.
+                "timonwong.shellcheck",
+
+                // Formateador automático de scripts shell (indentación,
+                // espaciado consistente).
+                "foxundermoon.shell-format",
+
+                // Autocompletado e "ir a definición" para Bash.
+                "mads-hartmann.bash-ide-vscode",
+
+                // Resaltado de sintaxis y soporte para Perl (Unidad 4).
+                "richterger.perl"
+            ],
+
+            // Ajustes de VS Code que se aplican solo dentro del
+            // Codespace (no tocan la configuración personal del estudiante).
+            "settings": {
+                // Cuando abras una terminal nueva, que sea Bash por
+                // defecto (no zsh, no sh).
+                "terminal.integrated.defaultProfile.linux": "bash",
+                // Final de línea estilo UNIX (\n) en vez de Windows
+                // (\r\n). ESTO ES CRÍTICO: los scripts shell FALLAN
+                // silenciosamente si tienen \r\n, con errores tan raros
+                // como "bad interpreter: No such file or directory".
+                "files.eol": "\n"
+            }
+        }
+    },
+
+    // ------------------------------------------------------------------------
+    // containerEnv: variables de entorno al arrancar el contenedor
+    // ------------------------------------------------------------------------
+    // Similar al ENV del Dockerfile, pero se aplican cada vez que se
+    // INICIA el contenedor (no solo al construirlo). Las definimos
+    // también aquí para asegurarnos de que estén disponibles en las
+    // terminales que abra VS Code.
+    "containerEnv": {
+        "LANG": "es_ES.UTF-8",
+        "TERM": "xterm-256color"
+    },
+
+    // ------------------------------------------------------------------------
+    // hostRequirements: mínimo de máquina que pedimos a Codespaces
+    // ------------------------------------------------------------------------
+    // Codespaces ofrece distintos tamaños de VM (máquina virtual).
+    // Pedimos al menos:
+    //
+    //   cpus: 2          -> 2 núcleos de procesador. Suficiente para
+    //                       compilar, escanear y editar cómodamente.
+    //   memory: "8gb"    -> 8 GB de RAM. Tor + nmap + análisis de logs
+    //                       holgado, sin riesgo de que se cuelgue.
+    //   storage: "32gb"  -> 32 GB de disco. La imagen pesa ~1.5 GB y
+    //                       queremos margen para logs, capturas .pcap,
+    //                       proyectos de los y las estudiantes, etc.
+    //
+    // Si el estudiante intenta usar una máquina más pequeña, Codespaces
+    // le avisará antes de crear el Codespace. Esto evita el típico
+    // "profe, se me congeló todo" por falta de memoria.
+    "hostRequirements": {
+        "cpus": 2,
+        "memory": "8gb",
+        "storage": "32gb"
+    }
+}
