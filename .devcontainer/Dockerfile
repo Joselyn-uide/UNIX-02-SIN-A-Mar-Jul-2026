@@ -235,6 +235,22 @@ PROMPT_COMMAND=__set_prompt
 EOF
 CMD ["/bin/zsh"]
 
+# ===== Configuración del Prompt para ZSH =====
+RUN cat >> /root/.zshrc <<'EOF'
+# Cargar colores en zsh
+autoload -U colors && colors
+
+# Definir la lógica del símbolo según el resultado del comando anterior
+# %(?.visto.error) es una sintaxis especial de Zsh
+# %32k/31k definen los colores
+set_prompt() {
+    SYMBOL="%(?.%F{green}✓%f.%F{red}✗ %?%f)"
+    PROMPT="%F{cyan}[Joselyn_Laguna]%f %F{yellow}%1~%f $SYMBOL %F{white}$%f "
+}
+
+# Ejecutar la función antes de mostrar cada prompt
+add-zsh-hook precmd set_prompt
+EOF
 
 
 
