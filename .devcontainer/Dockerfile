@@ -218,39 +218,12 @@ RUN git config --system --add safe.directory '*' \
 # propia terminal integrada de VS Code, pero es buena práctica dejarla
 # definida para que la imagen sea usable también con Docker puro.
 # Prompt del curso para bash
+
+RUN chsh -s /usr/bin/zsh root
+
 RUN cat >> /root/.zshrc <<'EOF'
 
-# ===== Prompt del curso =====
-__set_prompt() {
-    local ec=$?
-    local mark
-    if [ $ec -eq 0 ]; then
-        mark='\[\e[32m\]✓\[\e[0m\]'
-    else
-        mark="\[\e[31m\]✗ $ec\[\e[0m\]"
-    fi
-    PS1="\[\e[36m\][Joselyn-Laguna]\[\e[0m\] \[\e[33m\]\W\[\e[0m\] $mark \$ "
-}
-PROMPT_COMMAND=__set_prompt
-EOF
-CMD ["/bin/zsh"]
-
-# ===== Configuración del Prompt para ZSH =====
-RUN cat >> /root/.zshrc <<'EOF'
-# Cargar colores en zsh
-autoload -U colors && colors
-
-# Definir la lógica del símbolo según el resultado del comando anterior
-# %(?.visto.error) es una sintaxis especial de Zsh
-# %32k/31k definen los colores
-set_prompt() {
-    SYMBOL="%(?.%F{green}✓%f.%F{red}✗ %?%f)"
-    PROMPT="%F{cyan}[Joselyn_Laguna]%f %F{yellow}%1~%f $SYMBOL %F{white}$%f "
-}
-
-# Ejecutar la función antes de mostrar cada prompt
-add-zsh-hook precmd set_prompt
+PROMPT='%F{cyan}[Joselyn-Laguna]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
 EOF
 
-
-
+CMD ["/usr/bin/zsh"]
