@@ -54,3 +54,11 @@ useradd -m -s /usr/bin/zsh luna
 `chown luna my_file`
 #`ls -l my_file`: You listed the file again to verify the change. The final output shows `-rw-r--r-- 1 luna root`, confirming that `luna` is now the owner, although the group remains `root`.
 `ls -l my_file`
+
+
+#groups: Shows the groups to which the current user belongs.
+#groupadd group_test: Creates a new group on the system called group_test.
+#groups (repeated): Note that only root is still shown here. This is because although the group exists, the root user has not yet been added to it.
+#cat /etc/group: This command displays the file where all the system groups are stored.
+#touch comun: Creates an empty file called common.
+#ls -l comun: Checks the permissions. As you can see, the file is created belonging to the root user and the root group, which is the default behavior.
