@@ -72,3 +72,8 @@ usermod -a -G grupo_test luna
 chgrp grupo_test comun
 #ls -l común: You listed the file to confirm the changes.. The output -rw-r--r-- 1 root grupo_test confirms that any member of grupo_test (like luna) is now subject to the group permissions of that file.
 ls -l comun
+
+#chown luna:grupo_test mi_archivo: Simultaneously changes the owner to `luna` and the group to `grupo_test` of the specified file.
+chown luna:group_test mi_archivo
+# ls -l mi_archivo`: Displays detailed file attributes to verify that the new owner and group were applied correctly
+ls -l mi_archivo
