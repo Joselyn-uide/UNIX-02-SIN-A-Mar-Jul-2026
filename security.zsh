@@ -62,3 +62,13 @@ useradd -m -s /usr/bin/zsh luna
 #cat /etc/group: This command displays the file where all the system groups are stored.
 #touch comun: Creates an empty file called common.
 #ls -l comun: Checks the permissions. As you can see, the file is created belonging to the root user and the root group, which is the default behavior.
+
+
+# usermod -a -G grupo_test luna: This command modifies the user luna.
+#-a (add): This means "add." It's vital because it prevents the user from being removed from their other groups.
+#-G: Indicates that you'll be working with secondary groups.
+usermod -a -G grupo_test luna
+#chgrp grupo_test común: Uses the Change Group command. You changed the group associated with the file común (which was previously root) to grupo_test.
+chgrp grupo_test comun
+#ls -l común: You listed the file to confirm the changes.. The output -rw-r--r-- 1 root grupo_test confirms that any member of grupo_test (like luna) is now subject to the group permissions of that file.
+ls -l comun
