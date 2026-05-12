@@ -35,3 +35,6 @@ touch secreto.txt
 mkdir privado
 #ls -l: Lists the files to verify that secreto.txt has -rw------- permissions and privado has drwx------.
 ls -l
+
+#UMASK
+# The umask (user mask) is a system command and value that determines the default permissions assigned to any file or directory at the time of its creation. It acts as a filter that "subtracts" or masks permissions from a predefined base (usually 666 for files and 777 for directories), allowing users to automatically control the privacy of their new data without having to manually modify each item. In short, the higher the mask number, the more restrictive the resulting permissions will be for the group and other users.
