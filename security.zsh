@@ -77,3 +77,12 @@ ls -l comun
 chown luna:group_test mi_archivo
 # ls -l mi_archivo`: Displays detailed file attributes to verify that the new owner and group were applied correctly
 ls -l mi_archivo
+
+#mkdir -p project/sub: Creates a nested folder structure; the `-p` parameter ensures that the parent directory (`project`) and the child directory (`sub`) are created simultaneously.
+mkdir -p project/sub
+#touch project/readme project/sub/data: Creates two empty files at different levels of the newly created structure.
+touch project/readme project/sub/data
+#chown -R luna:grupo_test proyecto: Changes the owner and group of the project folder and all its contents (files and subfolders) recursively using the `-R` parameter.
+chown -R luna
+#ls -lR project: Recursively displays the contents of the project and all its subfolders to verify that the change of ownership was applied at all levels.
+ls -lR project
