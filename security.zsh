@@ -25,3 +25,13 @@ touch archivo2
 mkdir directorio2
 #ls -l: Displays the final result, confirming that the permissions are now correct.
 ls -l
+
+
+# umask 077: Sets a restrictive mask that removes all permissions for the group and others (only the owner has access).
+umask 077
+#touch secreto.txt: Creates a file called secreto.txt applying the new mask 077.
+touch secreto.txt
+#mkdir privado: Creates a directory called privado applying the new mask 077.
+mkdir privado
+#ls -l: Lists the files to verify that secreto.txt has -rw------- permissions and privado has drwx------.
+ls -l
