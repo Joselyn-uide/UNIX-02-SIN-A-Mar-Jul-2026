@@ -140,3 +140,8 @@ addgroup --gid 2100 marketing
 addgroup --system cache_web
 # Verify the creation of the groups in the system file
 grep "diseno\|marketing\|cache_web" /etc/group
+
+# Add the root user to the 'desarrolladores' group without removing existing groups
+usermod -aG desarrolladores root 
+# Add the root user to the 'diseno' group as a secondary membership
+usermod -aG diseno root  
