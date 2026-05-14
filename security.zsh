@@ -104,3 +104,7 @@ id -u
 id -g 
 # All  ID groups
 id -G
+
+#Filters and displays the line in the /etc/group file that contains information about the root group (name, GID, and users).
+# grep (Filter the next word we give it)
+cat /etc/group | grep root
