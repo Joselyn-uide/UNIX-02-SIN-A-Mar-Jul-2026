@@ -86,3 +86,8 @@ touch project/readme project/sub/data
 chown -R luna
 #ls -lR project: Recursively displays the contents of the project and all its subfolders to verify that the change of ownership was applied at all levels.
 ls -lR project
+
+#User ID (numeric), primary group, secondary groups
+id
+#View all system users (indicates who has a password)
+cat /etc/passwd | head -10
