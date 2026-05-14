@@ -145,3 +145,14 @@ grep "diseno\|marketing\|cache_web" /etc/group
 usermod -aG desarrolladores root 
 # Add the root user to the 'diseno' group as a secondary membership
 usermod -aG diseno root  
+
+#Create a new group named 'grupo_temporal'
+groupadd grupo_temporal
+#Add root to the temporary group (preserving previous memberships)
+usermod -aG grupo_temporal root
+#Verify root's current groups (should show all previous groups + grupo_temporal)
+id root
+#Overwrite root's secondary groups (WARNING: This removes root from all groups except 'desarrolladores')
+usermod -G desarrolladores root
+#Check the result of the overwrite (previous groups like 'grupo_temporal' will be gone)
+id root
