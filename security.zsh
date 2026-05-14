@@ -108,3 +108,26 @@ id -G
 #Filters and displays the line in the /etc/group file that contains information about the root group (name, GID, and users).
 # grep (Filter the next word we give it)
 cat /etc/group | grep root
+
+# groupadd [options group_name]
+# create a simple group
+groupadd desarrolladores
+groupadd -g 2000 operaciones
+# system group (GID < 1000)
+groupadd --system servicios_web
+# Verify that they were created
+grep "desarrolladores\|operaciones\|servicios_web" /etc/group
+#Another way to do it without using a backslash
+grep -E "desarrolladores|operaciones|servicios_web" /etc/group
+#View main options
+groupadd --help
+#Filter the definitions of the minimum and maximum limits for group IDs (GIDs).
+grep "GID_MIN\|GID_MAX\|SYS_GID" /etc/login.defs
+#Defines the starting point of the ID range for groups created by the system.
+#SYS_GID_MIN=100
+#Defines the upper limit for system group IDs.
+#SYS_GID_MAX=999
+#Sets the initial ID for groups created for regular (non-system) users.
+#GID_MIN=1000
+#Sets the maximum allowed ID for regular user groups.
+#GID_MAX=60000
