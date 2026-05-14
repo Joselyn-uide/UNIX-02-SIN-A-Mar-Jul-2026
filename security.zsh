@@ -91,3 +91,16 @@ ls -lR project
 id
 #View all system users (indicates who has a password)
 cat /etc/passwd | head -10
+
+# Displays the first 10 lines of the file containing the definition of all system groups.
+cat /etc/group | head -10
+# List the names of the groups to which the current user belongs.
+groups
+# Lists the groups specifically associated with the user stored in the $USER environment variable.
+groups $USER
+#User ID
+id -u
+# Primary ID groups
+id -g 
+# All  ID groups
+id -G
