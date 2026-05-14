@@ -131,3 +131,12 @@ grep "GID_MIN\|GID_MAX\|SYS_GID" /etc/login.defs
 #GID_MIN=1000
 #Sets the maximum allowed ID for regular user groups.
 #GID_MAX=60000
+
+#Create a simple group
+addgroup diseno 
+# Create a group with a specific GID
+addgroup --gid 2100 marketing  
+# Create a new system group (GID < 1000)
+addgroup --system cache_web
+# Verify the creation of the groups in the system file
+grep "diseno\|marketing\|cache_web" /etc/group
