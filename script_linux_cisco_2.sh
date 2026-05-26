@@ -20,6 +20,8 @@ ls School
 mv current_name.txt new_name.txt
 # To rename the file animals.txt to a new name called zoo.txt:
 mv animals.txt zoo.txt
+# Viewing the contents of the current directory to list all available files and folders
+ls
 
 # Notes
 # - The mv command It requires at least two arguments: the first is the source (what will be moved or renamed), and the second is the destination.
