@@ -191,3 +191,32 @@ grep 'ee*' red.txt
 # - If grep is executed without specifying a filename, it acts on standard input, allowing interactive text filtering until Ctrl+D is pressed.
 # Because Linux is case-sensitive, some commands use the -i (case-insensitive) option. For example: Adding the -i flag makes grep case-insensitive. It will find both "Reef" and "Roof".
 grep -i 'r..f' red.txt
+
+
+
+
+# --- SECTION 15 ---
+# The shutdown Command (Shutting Down the System)
+# The shutdown command prepares the system to safely power off or reboot. It notifies all logged-in users and prevents new logins during the final five minutes prior to the complete shutdown.
+
+# To prepare the system for a safe power off using optional flags, a time constraint, and a custom warning message:
+shutdown [OPTIONS] TIME [MESSAGE]
+
+# To switch the current user session to the root administrative account:
+su -
+
+# To initiate an immediate system shutdown without any delay:
+shutdown now
+
+# To display the current system date, time, and time zone information:
+date
+
+# To schedule a system shutdown at a specific time of day in hh:mm format:
+shutdown 01:51
+
+# To schedule a system shutdown with a relative delay in minutes and broadcast a custom notification message to all users:
+shutdown +1 "Goodbye World!"
+
+# Notes
+
+# - Running the shutdown command requires root or administrative privileges on the system.
