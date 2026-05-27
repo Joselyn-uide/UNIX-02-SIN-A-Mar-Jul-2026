@@ -323,3 +323,38 @@ sudo apt-get purge package_name
 
 # To purge the cowsay application and all its structural footprints entirely from the system:
 sudo apt-get purge cowsay
+
+
+
+# --- SECTION 19 ---
+# User Password Updates 
+# The passwd command is utilized to update a user account's authentication credentials. Regular system users are restricted to modifying only their own personal passwords, whereas the root administrative account possesses the authority to change the password for any user on the system without knowing their current one.
+
+# To update or modify the password of the currently logged-in account:
+passwd
+
+# To display status and aging configuration metadata for a specific user account's password:
+passwd -S username
+# To view the password status information for the sysadmin account:
+passwd -S sysadmin
+
+# To switch the active terminal shell context to the root administrator account:
+su root
+# To force an administrative password reset on a targeted user account from the root session:
+passwd username
+# To change the password of the sysadmin account while operating with root privileges:
+passwd sysadmin
+
+# To terminate the privileged root session and safely return back to the standard user terminal shell:
+exit
+
+# --- Structure of passwd -S Output Fields ---
+# The status command generates a space-separated string containing specific account aging rules:
+# [User] [Status] [Last_Update] [Min_Days] [Max_Days] [Warning] [Inactivity]
+# - Username: The exact system login identifier name
+# - Password status: P (Password usable/active), L (Locked), or NP (No password set).
+# - Update date: The calendar date when the account credential was last modified.
+# - Minimum: Minimum number of days required to pass before the user is permitted to change it again.
+# - Maximum: Maximum lifecycle duration in days before the current password expires.
+# - Warning: Number of days prior to expiration that the user will receive proactive warning alerts.
+# - Inactivity: Allowed grace-period days after expiration before the account becomes completely deactivated.
