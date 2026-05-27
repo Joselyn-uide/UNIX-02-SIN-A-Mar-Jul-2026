@@ -53,3 +53,25 @@ ls Work
 
 # Notes
 # - To delete a file inside a directory, the user must have write and execute permissions for that specific directory.
+
+
+# --- SECTION 14 ---
+# Input Filtering (Filtrado de entradas)
+# The grep command is a text filter that searches for lines in an input and returns those that match a specific pattern.
+# To search for a pattern within a file using optional flags:
+grep [OPTIONS] PATTERN [FILE]
+
+# To copy the system password file to the current directory:
+cp /etc/passwd .
+
+# To filter and display lines matching a specific pattern within a file:
+grep pattern filename
+# To search for the pattern sysadmin inside the passwd file:
+grep sysadmin passwd
+# To verify that grep works within Codespaces, the following command was executed.
+# It searches for the current username using the environment variable:
+grep $USER passwd
+
+# Notes
+# - The passwd file contains details about special system accounts and user accounts.
+# - The grep command can accept a simple search term as a pattern, but it is also capable of interpreting much more complex search patterns.
