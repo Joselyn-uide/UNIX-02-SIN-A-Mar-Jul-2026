@@ -400,3 +400,106 @@ echo "This food is good." >> newfile1.txt
 
 # Notes
 # - In order to modify or write data streams into any file via redirection, the current executing user must possess valid write permissions for that specific file asset.
+
+
+# --- SECTION 21 ---
+# The vi/vim Text Editor
+# The vi editor (pronounced vi-ay) is the standard, universal text editor available natively across all Linux and UNIX distributions. It functions seamlessly in both Command-Line Interfaces (CLI) and Graphical User Interfaces (GUI). Modern systems deploy an enhanced version called vim (vi Improved), which retains all legacy functionalities while adding advanced features.
+
+# To open an existing text file or initialize a new one for editing within the current working directory:
+vi file_name
+# To create or open a document named newfile.txt inside your workspace terminal:
+vi newfile.txt
+
+# --- The Three Core Operating Modes of vi ---
+# 1. Modo de comando (Command Mode): The initial default mode used for navigation, cutting/copying/pasting text, and shifting into other modes. Pressing 'Esc' returns to this mode at any time.
+# 2. Modo de inserción (Insert Mode): The operational typing environment used to add or modify literal text content within the document.
+# 3. Modo Ex (Line-Editor Mode): The administrative system environment accessed by typing ':' to manage file architectures, execute text searches, save configurations, or exit the program.
+
+# 1. Modo de comando: Movimiento (Navigation)
+# Movement commands can be optionally preceded by a numerical counter value (`[count] motion`) to repeat the specific navigation block multiple times.
+
+# Standard Navigation Keys
+# h : Move the cursor one character to the left (or Left Arrow `←`).
+# j : Move the cursor down to the next text line (or Down Arrow `↓`).
+# k : Move the cursor up to the previous text line (or Up Arrow `↑`).
+# l : Move the cursor one character to the right (or Right Arrow `→`).
+# w : Advance the cursor forward by one complete word.
+# b : Retract the cursor backward by one complete word.
+# ^ : Snap the cursor directly to the structural beginning of the current line.
+# $ : Snap the cursor directly to the absolute end of the current line.
+
+# Line Skipping and Location Tracking
+# [line_number]G : Jumps the cursor to a specific line target
+# 1G or gg  : Instantly repositions the cursor at the first line of the document.
+# G : Instantly repositions the cursor at the final line of the document.
+# Ctrl + G : Displays status tracking details showing the current active line location.
+
+# 2. Modo de comando: Acciones (Editing Buffers)
+# Instead of classic Copy, Cut, and Paste, vi relies on Delete, Yank, and Put, using structural syntax patterns like action [number] motion.
+# Basic Actions (Delete, Change, Yank, Put)
+# ** Delete / Cut to Clipboard Buffer :**
+# dd  : Deletes the entire current line.
+# 3dd : Deletes the active line and the next two lines below it.
+# dw  : Deletes from the cursor position to the end of the current word.
+# d3w : Deletes the next three words from the cursor tracking point.
+
+# **Change / Delete and enter Insert Mode:**
+# cc  : Clears the entire current line and instantly opens Insert Mode.
+# cw  : Clears the current word from the cursor point and switches to Insert Mode.
+# c3w : Clears the next three words and switches to Insert Mode.
+
+# **Yank / Copy to Clipboard Buffer:**
+# yy : Copies (yanks) the entire current line into memory.
+# 3yy : Copies the current line and the next two rows simultaneously.
+# yw  : Copies the current word from the cursor position.
+# y$  : Copies text spanning from the active cursor point to the absolute end of the line.
+
+# ** Put / Paste from Clipboard Buffer:**
+# p  : Pastes (puts) the buffered text block directly **after** the cursor location.
+# P  : Pastes (puts) the buffered text block directly **before** the cursor location.
+
+
+# 3. Buscar en vi (Text Pattern Searching)
+# /pattern : Searches forward through the document for the specified string pattern. Press `Enter` to execute.
+# ?pattern : Searches backward through the document for the specified string pattern. Press `Enter` to execute.
+# n : Jumps to the next chronological match tracking forward.
+# N  : Returns back to the previous match tracking backward.
+
+
+# 4. Modo Insertar (Text Insertion Entry Points)
+# To begin writing literal characters, shift from Command Mode into Insert Mode using one of these structural entry hooks:
+# i : Commences text insertion immediately **before** the active cursor character.
+# a : Commences text insertion immediately **after** the active cursor character.
+# I : Snaps the cursor and commences insertion at the structural **beginning** of the current line.
+# A : Snaps the cursor and commences insertion at the absolute **end** of the current line.
+# o : Generates a clean new text row **below** the current line and enters Insert Mode.
+# O : Generates a clean new text row **above** the current line and enters Insert Mode.
+
+# 5. Modo Ex (File Management & System Commands)
+# Press `:` from Command Mode to interface with the Ex subsystem at the bottom row of the terminal matrix:
+# :w : Writes (saves) the active changes back to the system filesystem.
+# :w alternative_name : Saves a copy of the current document under a different filename asset.
+# :w! : Forces a file write execution overriding restricted permissions.
+# :e file_name : Opens an entirely separate text document file for structural editing.
+# :[number] : Moves the cursor directly to the designated line index row
+# :q : Closes (quits) the editor if no unwritten changes exist.
+# :q! : Quits the editor immediately, discarding all unsaved tracking modifications.
+# :wq or ZZ : Executes a sequential write-and-quit operation to save and close safely.
+
+
+# Testing vi in ​​Codespaces
+# Create or open the file in your directory:
+vi test_vi.txt
+
+# Write text:
+# Press the i key (you'll see "-- INSERT --" or "-- INSERT --" below).
+
+# Type any phrase.
+# Press the Esc key to return to Command Mode.
+
+# Save and Exit:
+# Type the colon (:) character to open Ex Mode at the bottom.
+# Type wq and press Enter:
+:wq
+# This will save the test_vi.txt file and return you to your normal Codespaces terminal. If you want to exit without saving, use :q!.
