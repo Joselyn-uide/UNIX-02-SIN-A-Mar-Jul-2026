@@ -120,3 +120,74 @@ $
 # Notes
 # - Extended regular expressions require the use of the egrep command or passing the -E option to the standard grep command.
 # - If ^ or $ are not placed at the absolute beginning or end of the pattern respectively, they are treated as literal characters.
+
+
+
+# --- SECTION 14.2 ---
+# Basic Patterns 
+# This section demonstrates how to use basic regular expressions with the grep command to filter specific text patterns using anchor characters, wildcards, bracket expressions, and repetition quantifiers.
+
+# To display the content of the file alpha-first.txt:
+cat alpha-first.txt
+# To display the content of the file red.txt:
+cat red.txt
+# To display the content of the file profile.txt:
+cat profile.txt
+
+# To search for a pattern that matches only at the beginning of a line using the ^ anchor:
+grep '^PATTERN' filename
+# To search for lines that start with the word root inside the passwd file:
+grep '^root' passwd
+grep '^root' /etc/passwd
+
+# To search for a pattern that matches only at the end of a line using the $ anchor:
+grep 'PATTERN$' filename
+# To search for lines that end with the letter r inside the alpha-first.txt file:
+grep 'r$' alpha-first.txt
+
+# To search using the . wildcard which matches any single character except a newline:
+grep 'r..f' filename
+# To search for lines containing the letter r, followed by any two characters, and then the letter f in red.txt:
+grep 'r..f' red.txt
+
+# To search for lines containing the letter r, followed by any two characters, and then the letter d in red.txt:
+grep 'r..d' red.txt
+
+# To search for lines that contain at least four characters in red.txt:
+grep '....' red.txt
+
+# To search for lines containing the letter r, followed by any two characters, and then the letter t in the passwd file:
+grep 'r..t' passwd
+
+# To search for a single character from a specified set or range using brackets [ ]:
+grep '[RANGE]' filename
+# To search for lines in profile.txt that contain any single digit from 0 to 9:
+grep '[0-9]' profile.txt
+
+# To invert a match inside brackets using the ^ character as the first element (matches anything NOT in the set):
+grep '[^RANGE]' filename
+# To search for lines in profile.txt that contain at least one character that is NOT a number:
+grep '[^0-9]' profile.txt
+
+# To match a literal dot character inside a bracket expression instead of using it as a wildcard:
+grep '[.]' filename
+# To search for lines in profile.txt that contain a literal period character:
+grep '[.]' profile.txt
+
+# To match zero or more repetitions of the preceding character using the * quantifier:
+grep 'PATTERN*' filename
+# To search for lines containing r, followed optionally by one or more e's, and ending with d in red.txt:
+grep 're*d' red.txt
+# To search for lines containing r, followed optionally by one or more o's or e's, and ending with d in red.txt:
+grep 'r[oe]*d' red.txt
+# To search for lines matching any character combination because z is optional (matches every line) in red.txt:
+grep 'z*' red.txt
+# To search for lines matching any character combination because e is optional (matches lines containing r) in red.txt:
+grep 'e*' red.txt
+# To search for lines containing at least one literal e, followed by zero or more e's in red.txt:
+grep 'ee*' red.txt
+
+# Notes
+# - If grep is executed without specifying a filename, it acts on standard input, allowing interactive text filtering until Ctrl+D is pressed.
+# Because Linux is case-sensitive, some commands use the -i (case-insensitive) option. For example: Adding the -i flag makes grep case-insensitive. It will find both "Reef" and "Roof".
+grep -i 'r..f' red.txt
