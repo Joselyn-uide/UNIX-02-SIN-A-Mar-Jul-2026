@@ -26,3 +26,30 @@ ls
 # Notes
 # - The mv command It requires at least two arguments: the first is the source (what will be moved or renamed), and the second is the destination.
 # - To move files successfully, you must have write and execute permissions in both the source and destination folders.
+
+
+# --- SECTION 13 ---
+# The rm Command (Removing Files and Directories)
+# The rm command is used to delete files and directories. It is important to note that deleted items do not go to a "trash bin"; they are generally removed permanently.
+
+# To remove a file or directory using optional flags:
+rm [OPTIONS] FILE
+
+# To remove an ordinary file:
+rm filename
+# To remove the ordinary file named linux.txt:
+rm linux.txt
+# To attempt to list the file linux.txt to verify its removal:
+ls linux.txt
+
+# To remove a directory recursively (including all its contents):
+rm -r directory_name
+# To attempt to remove the directory Work without options (which results in an error):
+rm Work
+# To remove the directory Work and all of its contents recursively:
+rm -r Work
+# To attempt to list the Work directory to verify its removal:
+ls Work
+
+# Notes
+# - To delete a file inside a directory, the user must have write and execute permissions for that specific directory.
