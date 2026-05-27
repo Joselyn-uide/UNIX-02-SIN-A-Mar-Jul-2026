@@ -75,3 +75,48 @@ grep $USER passwd
 # Notes
 # - The passwd file contains details about special system accounts and user accounts.
 # - The grep command can accept a simple search term as a pattern, but it is also capable of interpreting much more complex search patterns.
+
+
+
+# --- SECTION 14.1 ---
+# Regular Expressions
+# Regular expressions have two common forms: basic and extended. Most commands can interpret basic regular expressions by default, whereas extended regular expressions usually require a specific command option to function properly.
+
+# To use basic regular expressions with grep (default behavior):
+grep 'PATTERN' filename
+
+# To use extended regular expressions (using the -E option with grep):
+grep -E 'EXTENDED_PATTERN' filename
+
+# To use extended regular expressions (using the egrep command directly):
+egrep 'EXTENDED_PATTERN' filename
+
+# --- Basic Regular Expression Characters ---
+# Matches any single character:
+.
+# Matches any specified character inside the brackets:
+[ ]
+# Matches any character that is NOT specified inside the brackets:
+[^ ]
+# Matches zero or more of the preceding character:
+*
+# Matches the pattern only if it is at the beginning of the line:
+^
+# Matches the pattern only if it is at the end of the line:
+$
+
+# --- Extended Regular Expression Characters ---
+# Matches one or more of the preceding pattern:
++
+# Indicates that the preceding pattern is optional:
+?
+# Specifies the minimum, maximum, or exact number of matches for the preceding pattern:
+{ }
+# Alternation - Represents a logical OR operation:
+|
+# Used to group patterns together:
+( )
+
+# Notes
+# - Extended regular expressions require the use of the egrep command or passing the -E option to the standard grep command.
+# - If ^ or $ are not placed at the absolute beginning or end of the pattern respectively, they are treated as literal characters.
