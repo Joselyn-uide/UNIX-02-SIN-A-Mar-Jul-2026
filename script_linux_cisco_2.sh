@@ -286,3 +286,40 @@ ps -ef
 # - TTY:   The terminal device name controlling the process (a '?' indicates it is a system background service).
 # - TIME:  The cumulative CPU processing time utilized by the specific process.
 # - CMD:   The full command name, executable path, and arguments used to initiate the process.
+
+
+# --- SECTION 18 ---
+# Package Management
+# Package management is the system utilized to install, update, query, or remove software components from a Linux filesystem. Debian-based systems (like Ubuntu) use dpkg at the lowest level, with the Advanced Package Tool (apt-get) serving as a user-friendly front-end interface.
+
+# To update the local repository database index of available software packages:
+sudo apt-get update
+
+# To search the package cache descriptions using a keyword lookup filter:
+apt-cache search keyword
+# To search for available utility packages related to the keyword 'cow':
+apt-cache search cow
+
+# To install a specified software package from remote network repositories:
+sudo apt-get install package_name
+# To install the command-line utility package named cowsay:
+sudo apt-get install cowsay
+
+# To execute the interactive ASCII cow text generator utility:
+cowsay 'MESSAGE'
+# To pass a custom string phrase to cowsay while avoiding shell character interpretation:
+cowsay 'NDG Linux Unhatched'
+# Make the cow talk in your Codespaces (using its full installation path):
+/usr/games/cowsay 'NDG Linux Unhatched'
+
+# To upgrade all currently installed system packages to their latest available versions:
+sudo apt-get upgrade
+
+# To uninstall an active package while safely leaving behind its existing configuration files:
+sudo apt-get remove package_name
+
+# To permanently uninstall a package and completely erase all associated configuration structures:
+sudo apt-get purge package_name
+
+# To purge the cowsay application and all its structural footprints entirely from the system:
+sudo apt-get purge cowsay
