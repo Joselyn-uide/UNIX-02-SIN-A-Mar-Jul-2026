@@ -220,3 +220,39 @@ shutdown +1 "Goodbye World!"
 # Notes
 
 # - Running the shutdown command requires root or administrative privileges on the system.
+
+
+
+# --- SECTION 16 ---
+# Network Configuration
+# This section covers commands used to display or modify network interface configurations and to test connectivity between host devices over a network.
+
+# To display network interface configuration information using optional flags:
+ifconfig [OPTIONS]
+# To display the configuration details of all active network interfaces on the system:
+ifconfig
+
+# To verify connectivity to a remote host or network device using its IP address or domain name:
+ping [OPTIONS] destination
+# To send exactly four ICMP echo request packets to the local network interface IP address to test connectivity:
+ping -c 4 192.168.1.2
+# To send exactly four ICMP echo request packets to an unreachable or non-existent network IP address:
+ping -c 4 192.168.1.3
+
+# --- Codespaces Environment Troubleshooting & Practice ---
+# To synchronize the local package index with the remote repositories to fetch recent package updates:
+sudo apt-get update
+# To resolve a missing command error by installing the network utility package containing the ping tool:
+sudo apt-get install -y iputils-ping
+# To test internal host loopback connectivity after package installation using the standard local host address:
+ping -c 4 127.0.0.1
+
+# Notes
+# - The eth0 interface represents the primary wired Ethernet network device, which shows status indicators like UP, RUNNING, and its assigned IPv4 address.
+# - The lo interface represents the local loopback device, a virtual network interface used by the local machine to route network traffic to itself.
+# - The iwconfig command functions similarly to ifconfig but is dedicated exclusively to wireless network interfaces.
+
+# Codespaces Real-World Observations
+# - Running 'ifconfig' in GitHub Codespaces exposes custom interfaces like docker0 (used for container isolation) and assigns eth0 a dynamically generated private IP (e.g., 10.0.1.28) instead of the static lab defaults.
+# - The 'ping' package is excluded by default in lightweight container deployments, triggering a "bash: ping: command not found" error until explicitly resolved via the apt package manager.
+# - Performing a ping execution to the lab network targets (192.168.1.2 or 192.168.1.3) from within Codespaces yields 100% packet loss because those IP networks are isolated inside the virtual Cisco training environments and do not exist on the external cloud instance.
