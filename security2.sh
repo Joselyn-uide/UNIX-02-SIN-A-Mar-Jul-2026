@@ -49,3 +49,9 @@ echo "Grupo restaurado:$(id -gn)"
 
 # Compare the two files
 ls -la ~/antes_de_newgrp.txt ~/dentro_de_newgrp.txt
+
+
+# Create a password-protected group
+groupadd grupo_restringido
+gpasswd grupo_restringido
+# The system will prompt you for a password for the group
