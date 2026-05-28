@@ -55,3 +55,12 @@ ls -la ~/antes_de_newgrp.txt ~/dentro_de_newgrp.txt
 groupadd grupo_restringido
 gpasswd grupo_restringido
 # The system will prompt you for a password for the group
+
+
+
+# Create a test user with a home directory
+useradd -m usuario_prueba
+# Switch to the new test user environment
+su - usuario_prueba
+# Switch to the restricted group by entering the password
+newgrp grupo_restringidoo
