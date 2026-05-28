@@ -14,3 +14,18 @@ echo "Grupo actual: $(id -gn)"
 # Create a file before newgrp
 touch ~/antes_de_newgrp.txt
 ls -la ~/antes_de_newgrp.txt
+
+
+# Update repositories and upgrade system packages
+apt update && apt upgrade -y
+# Install the required package for the newgrp command
+apt install util-linux-extra -y
+# Refresh the Zsh shell command cache
+rehash
+# Create the new group in the system
+groupadd desarrolladores
+# Switch to the 'developers' group
+newgrp desarrolladores
+# Verify that the active group has changed
+id -gn
+echo "Nuevo grupo activo: $(id -gn)"
