@@ -45,3 +45,7 @@ exit
 # Verify that we are back in the original group
 id -gn
 echo "Grupo restaurado:$(id -gn)"
+
+
+# Compare the two files
+ls -la ~/antes_de_newgrp.txt ~/dentro_de_newgrp.txt
