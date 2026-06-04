@@ -219,11 +219,24 @@ RUN git config --system --add safe.directory '*' \
 # definida para que la imagen sea usable también con Docker puro.
 # Prompt del curso para bash
 
-RUN chsh -s /usr/bin/zsh root
+# Cambiamos el shell por defecto del usuario root a Bash
+RUN chsh -s /bin/bash root
 
-RUN cat >> /root/.zshrc <<'EOF'
+# Agregamos el prompt personalizado compatible con BASH (incluye lógica de check/X)
+RUN cat >> /root/.bashrc <<'EOF'
 
-PROMPT='%F{cyan}[Joselyn-Laguna]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
+# Función para evaluar el estado del último comando y pintar la raíz
+prompt_status() {
+    local EXIT="$?"
+    if [ $EXIT -eq 0 ]; then
+        echo -e "\[\e[32m\]√\[\e[m\]"
+    else
+        echo -e "\[\e[31m\]X $EXIT\[\e[m\]"
+    fi
+}
+
+PS1='\[\e[36m\][Joselyn-Laguna]\[\e[m\] \[\e[33m\]\W\[\e[m\] $(prompt_status) \$ '
 EOF
 
-CMD ["/usr/bin/zsh"]
+# Comando por defecto usando la ruta estándar de Bash
+CMD ["/bin/bash"]

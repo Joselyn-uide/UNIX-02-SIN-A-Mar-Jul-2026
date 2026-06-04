@@ -98,7 +98,7 @@
             "settings": {
                 // Cuando abras una terminal nueva, que sea Bash por
                 // defecto (no zsh, no sh).
-                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.defaultProfile.linux": "bash",
                 // Final de línea estilo UNIX (\n) en vez de Windows
                 // (\r\n). ESTO ES CRÍTICO: los scripts shell FALLAN
                 // silenciosamente si tienen \r\n, con errores tan raros
