@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 top  # Displays real-time system processes, CPU usage, and memory usage.
 top&  # # Runs the 'top' process monitor in the background, freeing up the terminal.
 
@@ -26,3 +26,9 @@ cat stdout.txt
 cat stderr.txt
 lzl 2> error.txt
 cat error.txt
+
+cat < output.txt
+cat << EOF
+Black Hat Bash
+by No Starch Press
+EOF
