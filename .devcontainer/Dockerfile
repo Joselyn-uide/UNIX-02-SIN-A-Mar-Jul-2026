@@ -380,6 +380,18 @@ SHELL ["/bin/bash", "-c"]
 # Codespaces siempre monta el código del repositorio en
 # /workspaces/<nombre-del-repo>. Establecer /workspaces aquí hace que las
 # terminales se abran cerca de nuestros archivos del curso.
+
+# ----------------------------------------------------------------------------
+# BLOCK I: Establishment of the Work Directory (WORKDIR)
+# ----------------------------------------------------------------------------
+# The WORKDIR command sets the default working directory where subsequent 
+# commands will be executed. It functions similarly to the Linux cd command, 
+# changing the system's active location and updating the $PWD variable (— BHB 
+# Chapter 1). In GitHub Codespaces, it's set to /workspaces because the project 
+# repository is automatically stored there. This allows terminals and scripts 
+# to start directly in the working directory, simplifying file access and 
+# avoiding manual directory changes (— BHB Chapter 3).
+
 WORKDIR /workspaces
 
 # Configuración de Git para el contenedor:
