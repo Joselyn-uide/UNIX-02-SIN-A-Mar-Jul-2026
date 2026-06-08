@@ -151,6 +151,86 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
 # El "&&" encadena comandos: ejecuta el siguiente SOLO SI el anterior
 # terminó bien. Si algo falla, el build se detiene con error (que es lo
 # que queremos: mejor un error claro que una imagen rota).
+
+# -----------------------------------------------------------------------
+# BLOCK E: Updating, Installing, and Configuring Container Tools
+# -----------------------------------------------------------------------
+# Update vs. Install: apt-get update updates the list of available 
+# packages on the servers, while apt-get install downloads and installs 
+# the selected programs (— BHB Chapter 3).
+
+# The -y option automatically accepts all confirmations to avoid 
+# interruptions during installation (— BHB Chapter 3). Meanwhile, 
+# --no-install-recommends prevents the download of optional packages, 
+# installing only the essential components.
+
+# In Docker, each RUN creates an independent layer. Unifying update, 
+# installation, and cleanup into a single block prevents temporary files 
+# from being stored in intermediate layers, significantly reducing the 
+# final image size.
+
+# The && operator executes the next command only if the previous one 
+# completes successfully. The backslash \ allows you to split a long 
+# instruction into multiple lines to improve readability without 
+# affecting its functionality.
+
+# INSTALLED TOOLS
+# 1. Text editors and shells (neovim, vim, zsh, bash-completion): These 
+# provide a working environment for programming, editing configurations,
+# and managing systems from the terminal (— BHB Chapter 1).
+
+# 2. Text processing tools (perl, make, gawk, sed, grep): These utilities
+# allow you to search for specific text patterns, modify words within 
+# files, or extract snippets of information without needing to open a 
+# manual editor (— BHB Chapter 2).
+    # - grep: Used to filter lines of text containing a word of interest 
+    # within a large volume of data (— BHB Chapter 2).
+    # - sed: A stream editor that automatically modifies or cleans text 
+    # on the fly (— BHB Chapter 2).
+    # - gawk (or awk): Works as a processor that analyzes column-structured 
+    # files to extract specific data (— BHB Chapter 2).
+
+# 3. Basic UNIX utilities (coreutils, findutils, procps, less, tree, jq): 
+# These provide essential tools for system administration. coreutils 
+# manages files and directories, findutils performs searches, procps 
+# controls processes, less displays text files, and tree shows the folder structure.
+    #- jq: This is a specialized tool for interpreting and formatting 
+    # complex blocks of data structured in JSON format, which are obtained 
+    # from web queries (— BHB Chapter 3).
+
+# 4. Manual pages (man-db, manpages, manpages-posix): These provide the 
+# technical documentation needed to consult advanced commands and options (— BHB Chapter 1).
+
+# 5. Basic networking, downloads, and script validation (curl, wget, git, 
+# git-lfs, ca-certificates, locales, shellcheck): These provide the necessary 
+# tools for obtaining resources from the internet, managing code repositories, 
+# and ensuring secure connections using digital certificates. Furthermore, 
+# shellcheck allows the detection of errors and bad practices in scripts 
+# before execution, facilitating the development and maintenance of the environment.
+    # - curl and wget allow you to make web requests and download files 
+    # from a URL, while httpie offers a more modern and user-friendly 
+    # alternative for interacting with web services (— BHB Chapter 3).
+
+# 6. Network reconnaissance, scanning, and capture (nmap, masscan, tcpdump, 
+# tshark): Tools used in security audits to discover devices, identify exposed
+# services, and analyze network traffic. nmap and masscan allow you to scan 
+# hosts and ports, while tcpdump and tshark facilitate real-time packet capture
+# and inspection (— BHB Chapters 2 and 3).
+
+# 7. Network and anonymity utilities (netcat-traditional, socat, tor, 
+# proxychains4, obfs4proxy, etc.): Facilitate network communication and testing
+# while maintaining a certain level of anonymity. netcat-traditional allows you
+# to create direct connections between computers, socat links and redirects 
+# different types of connections and sockets, tor anonymizes traffic through a 
+# distributed network, proxychains4 routes applications through one or more 
+# proxies, and obfs4proxy hides the use of Tor to make it harder for monitoring 
+# systems to detect.
+
+# The block concludes by enabling Spanish localization using sed -i and 
+# locale-gen. Afterward, apt-get clean and the removal of /var/lib/apt/lists/* 
+# delete temporary files and installation indexes to reduce the final size of 
+# the container and optimize its storage.
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     # === Editores de texto y shells (intérpretes de comandos) ===
