@@ -401,6 +401,19 @@ WORKDIR /workspaces
 # - pull.rebase false: merge por defecto al hacer pull (más intuitivo)
 # - git lfs install --system: registra los hooks de LFS globalmente para
 #   que, si un repo los necesita, funcionen sin sorpresas.
+
+# ----------------------------------------------------------------------------
+# BLOCK J: Git settings for the container
+# ----------------------------------------------------------------------------
+# This block configures Git to facilitate working within the container. The
+# safe.directory option '*' allows Git to seamlessly recognize and use project
+# folders mounted from the host system. init.defaultBranch main sets main as 
+# the default name for new branches, while `pull.rebase false` causes Git to 
+# combine changes using the traditional merge method when performing a pull. 
+# Finally, `git lfs install --system` enables support for Git LFS, a tool that 
+# allows for more efficient management of large files within repositories 
+# (- BHB Chapter 3).
+
 RUN git config --system --add safe.directory '*' \
  && git config --system init.defaultBranch main \
  && git config --system pull.rebase false \
