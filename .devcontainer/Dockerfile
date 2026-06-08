@@ -319,6 +319,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  # --- Después de instalar, activamos el idioma español ---
  # sed busca "# es_ES.UTF-8" en /etc/locale.gen y le quita el "#" para
  # activar esa línea. Luego locale-gen compila los archivos de idioma.
+
+# ----------------------------------------------------------------------
+# BLOCK F: Activating the Spanish Language in the Container 
+# ----------------------------------------------------------------------
+# Using the sed -i command, we modify the internal file /etc/locale.gen
+# to find the rule for the Ecuadorian language (# es_EC.UTF-8 UTF-8) 
+# and remove the # symbol that was blocking it. This tool follows the 
+# strategy described in the manual for automatically editing text streams 
+# using specific patterns to clean or restructure system files (-BHB 
+# Chapter 2). Afterward, the `locale-gen` command processes this change 
+# and compiles the necessary language packages, enabling our terminal to
+# natively recognize Ecuadorian Spanish.
+
  && sed -i 's/# es_ES.UTF-8/es_ES.UTF-8/' /etc/locale.gen \
  && locale-gen \
  \
