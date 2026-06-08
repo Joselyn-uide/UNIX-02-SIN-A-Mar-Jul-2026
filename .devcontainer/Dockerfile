@@ -43,6 +43,22 @@
 FROM kalilinux/kali-rolling:latest
 
 
+# ------------------------------------------------------------------------------
+# BLOCK B: Image, Layer, and Cache Concepts
+# ------------------------------------------------------------------------------
+# Building a Docker environment is done progressively by storing individual 
+# fixed blocks, where each instruction in the configuration file generates a 
+# permanent record. The system saves these blocks in local temporary memory to 
+# speed up processes. This way, when powering up or shutting down lab components 
+# for safety testing, the repetitive downloading of unchanged elements is 
+# avoided, ensuring a clean and consistent environment (— BHB Chapter 3). 
+# Because this memory operates in a top-down sequence, the visual organization 
+# and position of the lines of code become critical. If an instruction located 
+# at the beginning of the document is altered, this storage chain is completely 
+# broken, forcing the reprocessing of each subsequent step and delaying the 
+# deployment of the automated environment (— BHB Chapter 3). For this reason, 
+# it is recommended to place fixed and permanent parameters at the top.
+
 # ----------------------------------------------------------------------------
 # ENV: variables de entorno permanentes dentro del contenedor
 # ----------------------------------------------------------------------------
