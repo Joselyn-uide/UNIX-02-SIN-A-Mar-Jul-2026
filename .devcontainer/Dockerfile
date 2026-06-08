@@ -23,6 +23,23 @@
 # En lugar de partir de cero, partimos de la imagen oficial de Kali Linux
 # en su versión "rolling" (actualización continua, siempre al día).
 # Todo lo que instalemos más abajo se apila ENCIMA de esta base.
+
+# ----------------------------------------------------------------------------
+# BLOCK A: Defining the Base Image and Selecting the Kali Linux Distribution
+# ----------------------------------------------------------------------------
+# The FROM instruction is the starting point in any Dockerfile and defines 
+# what is known as the base image. A base image is the initial, clean, and 
+# pre-configured operating system on which the entire virtualized 
+# environment will be built. The kalilinux/kali-rolling distribution is 
+# specifically selected because Kali is the industry standard in 
+# cybersecurity and penetration testing. By choosing this base, we ensure 
+# that the container inherits an optimized ecosystem with security 
+# repositories ready for auditing systems, which aligns with the methodology 
+# for preparing efficient and isolated hacking labs through secure dependency
+# bundling (— BHB Chapter 3). Furthermore, the book emphasizes that to 
+# natively run practical labs and offensive shell commands without altering 
+# our host system, a Kali Linux-based environment is essential (— BHB Chapter 1).
+
 FROM kalilinux/kali-rolling:latest
 
 
