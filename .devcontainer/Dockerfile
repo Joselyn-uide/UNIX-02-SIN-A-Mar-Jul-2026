@@ -339,6 +339,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  # apt deja archivos de caché que ya no necesitamos después de instalar.
  # Borrarlos aquí (en el mismo RUN) hace la capa final más pequeña.
  # Si los borráramos en otro RUN, seguirían ocupando en la capa anterior.
+
+# ---------------------------------------------------------------------------
+# BLOCK G: Image cleaning and optimization
+# ---------------------------------------------------------------------------
+# Deleting binary installers and temporary download logs within the same RUN
+# instruction is essential due to Docker's immutable layer structure; if done
+# in a later step, these unnecessary items remain indexed and permanently 
+# frozen in the container's history, occupying hidden space (— BHB Ch. 3). 
+
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
