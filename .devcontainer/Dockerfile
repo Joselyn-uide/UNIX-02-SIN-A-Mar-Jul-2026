@@ -116,6 +116,19 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # normales (no-root) deben poder capturar paquetes. Como en el contenedor
 # siempre somos root, respondemos "false" POR ADELANTADO usando
 # debconf-set-selections para que no detenga el build esperando input.
+
+# ----------------------------------------------------------------------------
+# BLOCK D: Automating Responses with debconf-set-selections
+# ----------------------------------------------------------------------------
+# During the installation of programs like Wireshark on Linux, security 
+# permission prompts may appear requiring user intervention. In Docker 
+# environments, this causes problems because execution is automatic and cannot 
+# respond to these requests, resulting in the process halting. To avoid this, 
+# debconf-set-selections is used. The echo command writes the desired response
+# and, through the pipe (|), passes it directly to the debconf-set-selections 
+# tool. This tool allows you to predefine the responses before installation. 
+
+
 RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
     | debconf-set-selections
 
