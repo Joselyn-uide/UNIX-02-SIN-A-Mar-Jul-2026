@@ -358,6 +358,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Por defecto Docker usa /bin/sh (un shell más limitado y antiguo). Lo
 # cambiamos a bash por si agregamos más instrucciones con sintaxis
 # moderna (arrays, [[ ]], etc.).
+
+# ----------------------------------------------------------------------------
+# BLOCK H: Configuring SHELL in Docker
+# ----------------------------------------------------------------------------
+# The SHELL instruction changes Docker's default interpreter (/bin/sh, which 
+# is outdated and limited) to /bin/bash to take advantage of the advanced 
+# tools, arrays, and complex automations it offers on Linux systems (— BHB 
+# Chapter 1). Within this declaration, the -c (code or command) option is a 
+# crucial flag that instructs Bash to strictly read, process, and execute the
+# subsequent instructions written in the RUN block as if they were a 
+# continuous string of text, thus allowing the cybersecurity lab tools to be 
+# configured correctly and without interruption (— BHB Chapter 1).
+
 SHELL ["/bin/bash", "-c"]
 
 
