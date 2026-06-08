@@ -81,6 +81,28 @@ FROM kalilinux/kali-rolling:latest
 #
 # La barra invertida "\" al final de cada línea significa "esto continúa
 # en la línea siguiente". Solo es para legibilidad.
+
+# ----------------------------------------------------------------------------
+# BLOCK C: Environment Variable (ENV) configuration for container customization
+# and operation
+# ----------------------------------------------------------------------------
+# The ENV instruction is used to declare permanent environment variables 
+# within the container. The command interpreter automatically loads and 
+# processes this set of global variables in each new session invoked, 
+# allowing system tools to adapt their dynamic behavior at runtime (— BHB Ch. 1).
+
+# - By defining DEBIAN_FRONTEND=noninteractive, we instruct the package manager 
+# to suppress any graphical menus that require our intervention.
+
+# - Configuring LANG=es_EC.UTF-8 and LC_ALL=es_EC.UTF-8 forces the operating 
+# system to use the Spanish localization and language of Ecuador with Unicode 
+# universal encoding.
+
+# - Finally, TERM=xterm-256color tells the system the type of terminal it is 
+# emulating, allowing console tools and text editors to have a 256-color palette, 
+# which is vital to avoid mistakes when coding scripts (— BHB Ch. 1).
+
+
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=es_ES.UTF-8 \
     LC_ALL=es_ES.UTF-8 \
