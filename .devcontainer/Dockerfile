@@ -427,6 +427,19 @@ RUN git config --system --add safe.directory '*' \
 # definida para que la imagen sea usable también con Docker puro.
 # Prompt del curso para bash
 
+# ----------------------------------------------------------------------------
+# BLOCK K: Changing the default shell using chsh
+# ----------------------------------------------------------------------------
+# The command chsh -s /usr/bin/zsh root changes the default shell for the 
+# root user, setting Zsh as the primary interactive environment. The -s 
+# option specifies the path to the new shell (/usr/bin/zsh), and root 
+# specifies the user to whom the change will apply. This way, every time a
+# terminal is opened or the container is accessed, Zsh will automatically 
+# start instead of Bash. Although Bash is still used for configuration and 
+# automation tasks (- BHB Chapter 1), Zsh offers more advanced features 
+# such as improved autocompletion, syntax highlighting, and command correction,
+# aligning with the default configuration of modern Kali Linux releases.
+
 RUN chsh -s /usr/bin/zsh root
 
 RUN cat >> /root/.zshrc <<'EOF'
