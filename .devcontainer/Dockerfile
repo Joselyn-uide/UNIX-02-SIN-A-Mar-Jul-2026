@@ -465,4 +465,15 @@ RUN cat >> /root/.zshrc <<'EOF'
 PROMPT='%F{cyan}[Joselyn-Laguna]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
 EOF
 
+# -------------------------------------------------------------------------------
+# BLOCK M: Establish default CMD directive to launch interactive Zsh at startup
+# -------------------------------------------------------------------------------
+# The CMD directive ["/usr/bin/zsh"] represents the terminal instruction of a 
+# Dockerfile and differs from RUN, since while the latter executes and injects 
+# static layers during the image building process (— BHB Chapter 3), CMD does not 
+# perform any action during the build; its function is to set the default 
+# execution command that will automatically come to life when the container 
+# starts, ensuring that a live Zsh interpreter is started to receive interactive 
+# commands and avoid the termination of the root process.
+
 CMD ["/usr/bin/zsh"]
