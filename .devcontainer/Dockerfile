@@ -442,6 +442,24 @@ RUN git config --system --add safe.directory '*' \
 
 RUN chsh -s /usr/bin/zsh root
 
+# ------------------------------------------------------------------------------
+# BLOCK L: Identity Personalization using Heredoc
+# ------------------------------------------------------------------------------
+# A here-document (heredoc), denoted by the operator <<'EOF', is a special 
+# redirection structure that allows us to send multiple lines of continuous text
+# as direct input to a command (in this case, concatenating them to the
+# /root/.zshrc profile using cat >>) treating them as if they were a separate 
+# file and respecting line breaks and whitespace (— BHB Chapter 1). The word EOF 
+# functions as a delimiter that strictly marks the beginning and end of the block 
+# of data we want to inject without needing to open a manual editor (— BHB 
+# Chapter 1). Within this block, the PROMPT line is responsible for configuring 
+# the visual appearance and identity of our interactive console: it defines a 
+# fixed cyan text with the name [Joselyn-Laguna], displays the current working 
+# location in yellow with %1~ and adds a dynamic validator that examines the 
+# termination code of the previous command to draw a green check mark (√) if it 
+# was successful or a red X (X ?) if there was any syntax failure at runtime 
+# (— BHB Cap. 1).
+
 RUN cat >> /root/.zshrc <<'EOF'
 
 PROMPT='%F{cyan}[Joselyn-Laguna]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
