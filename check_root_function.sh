@@ -22,3 +22,8 @@ else
     # Display this alternative message if the function returned 1 (not root).
     echo "User is not root!"
 fi
+
+# Create the new user luna 
+# adduser luna
+# Switch session to the luna user, fully loading their configuration environment.
+# su - luna
