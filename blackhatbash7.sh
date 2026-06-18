@@ -22,3 +22,9 @@ echo "hola1,chao1" > example_csv.txt
 echo "hola2,chao2" >> example_csv.txt
 echo "hola3,chao3" >> example_csv.txt
 awk -F',' '{print $1}' example_csv.txt
+
+head log.txt
+awk 'NR < 10' log.txt
+grep "42.236.10.117" log.txt 
+awk '{print $7}' log.txt
+grep "42.236.10.117" log.txt | awk '{print $7}'
