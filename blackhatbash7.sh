@@ -34,3 +34,14 @@ grep "Mozilla" log.txt
 grep "Godzilla" log.txt
 sed 's/Mozilla/Godzilla/g' log.txt > newlog.txt
 grep "Godzilla" newlog.txt
+
+sed '1d' newlog.txt
+sed -i '1d' newlog.txt
+git diff newlog.txt
+
+sed -i '$d' newlog.txt
+sed 's/ //g' newlog.txt > newlog1.txt
+grep " " newlog1.txt
+grep -c " " newlog1.txt
+
+sed '8,10d' newlog1.txt
