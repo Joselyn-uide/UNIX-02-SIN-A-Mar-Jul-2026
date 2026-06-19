@@ -45,3 +45,6 @@ grep " " newlog1.txt
 grep -c " " newlog1.txt
 
 sed '8,10d' newlog1.txt
+
+
+sed -n '10,15 p' log.txt
