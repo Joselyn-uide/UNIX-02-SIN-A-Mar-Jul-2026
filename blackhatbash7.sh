@@ -53,3 +53,8 @@ sleep 300 &
 jobs
 fg %1
 bg %1
+
+chmod +x exercise_solution.sh 
+nohup ./exercise_solution.sh mysite nostarch.com & 
+ps -ef | grep exercise_solution.sh 
+ps aux | grep "30737"
